@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>From Operating System to Evolving Harness | Context Engineering Part 7</title>
-<meta name="description" content="Part 7 of the Context Engineering series. How a personal agent harness learned to operate, verify, and evolve itself — on a frozen model. With four things you can run in the browser: the voice guard, the preserve-and-extend gate, the right-oracle check, and the harness's own drift.">
+<meta name="description" content="Part 7 of the Context Engineering series. How a personal agent harness learned to operate, verify, and evolve itself, on a frozen model. Four things you can run in the browser: the voice guard, the preserve-and-extend gate, the right-oracle check, and the harness's own drift.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,29 +29,39 @@ tailwind.config = { theme: { extend: {
   textarea{font-family:'JetBrains Mono',monospace}
   ::selection{background:rgba(34,211,238,.25)}
   a{color:#22d3ee}
+  .pulse-dot{animation:pulsedot 2s ease-in-out infinite}
+  @keyframes pulsedot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(52,211,153,.5)}50%{opacity:.5;box-shadow:0 0 0 4px rgba(52,211,153,0)}}
 </style>
 </head>
 <body class="antialiased">
 
 <!-- nav -->
 <nav class="sticky top-0 z-40 border-b border-line/70" style="background:rgba(11,17,32,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)">
-  <div class="max-w-5xl mx-auto px-5 py-3 flex items-center justify-between text-sm">
-    <span class="mono text-slate-400">Context Engineering <span class="text-cyan">·</span> <span class="text-slate-200">Part 7</span></span>
-    <span class="mono text-xs text-slate-500 hidden sm:block">a series on giving Claude context</span>
+  <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-2 h-2 rounded-full bg-emerald pulse-dot"></div>
+      <span class="text-sm font-medium text-slate-400">Context Engineering Series</span>
+      <span class="text-slate-600 mx-1">/</span>
+      <span class="text-sm font-semibold text-slate-200">Part 7</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://jtehrani84.github.io/context-engineering-skills/" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-cyan transition-colors hidden sm:inline">Part 5: Skills &rarr;</a>
+      <a href="https://jtehrani84.github.io/claude-context-architecture/from-memory-to-operating-system.html" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-cyan transition-colors">Part 6: Operating System &rarr;</a>
+    </div>
   </div>
 </nav>
 
 <!-- hero -->
 <header class="max-w-3xl mx-auto px-5 pt-20 pb-14">
-  <div class="mono text-xs tracking-[0.2em] uppercase text-cyan mb-5">Part 7 — Evolution</div>
+  <div class="mono text-xs tracking-[0.2em] uppercase text-cyan mb-5">Part 7 · Evolution</div>
   <h1 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight mb-6">
     From Operating System to <span class="grad">Evolving Harness</span>
   </h1>
   <p class="text-lg text-slate-300 leading-relaxed mb-4">
-    The first six parts were about what you <em>feed</em> an agent — memory, MCP, a knowledge graph, skills, Agent Script. Part 6 ended on the autonomy peak: approve at 10 PM, deployed by 7 AM, me still at the laptop.
+    The first six parts were about what you <em>feed</em> an agent: memory, MCP, a knowledge graph, skills, Agent Script. Part 6 ended on the autonomy peak, approve at 10 PM and deployed by 7 AM, me still at the laptop.
   </p>
   <p class="text-lg text-slate-300 leading-relaxed">
-    Since then the harness grew three planes. It learned to <span class="text-cyan font-semibold">operate</span> itself, <span class="text-emerald font-semibold">verify</span> itself, and — the frontier — begin to <span class="text-indigo-300 font-semibold">evolve</span> itself. On a frozen model. Four of those systems run right here in your browser; the point of a page about a self-verifying harness is that you get to verify it.
+    Since then the harness grew three planes. It learned to <span class="text-cyan font-semibold">operate</span> itself, <span class="text-emerald font-semibold">verify</span> itself, and begin to <span class="text-indigo-300 font-semibold">evolve</span> itself. That last one is the frontier, and all of it runs on a frozen model. Four of those systems run right here in your browser; the point of a page about a self-verifying harness is that you get to verify it.
   </p>
 </header>
 
@@ -63,25 +73,25 @@ tailwind.config = { theme: { extend: {
     <div class="space-y-4">
       <div class="glass rounded-xl p-5">
         <div class="flex items-baseline gap-3 mb-2"><span class="mono text-cyan font-semibold">01 · operate</span><span class="text-slate-500 text-sm">the harness runs without me</span></div>
-        <p class="text-slate-300 leading-relaxed">A fleet of scheduled jobs — <span class="mono text-xs text-slate-400">12 defined, 4 loaded now</span> — gathers overnight (Slack, X, news, GitHub), synthesizes the morning brief, closes the action plan, reseeds grounding, and prunes memory. The "7 AM boundary" from Part 6 became a running daemon. 229 dated intel pulls sit on disk, newest stamped today.</p>
+        <p class="text-slate-300 leading-relaxed">A fleet of scheduled jobs (<span class="mono text-xs text-slate-400">12 defined, 4 loaded now</span>) gathers overnight from Slack, X, news, and GitHub, synthesizes the morning brief, closes the action plan, reseeds grounding, and prunes memory. The "7 AM boundary" from Part 6 became a running daemon. 229 dated intel pulls sit on disk, newest stamped today.</p>
       </div>
       <div class="glass rounded-xl p-5">
         <div class="flex items-baseline gap-3 mb-2"><span class="mono text-emerald font-semibold">02 · verify</span><span class="text-slate-500 text-sm">the harness checks the truth of its own claims</span></div>
-        <p class="text-slate-300 leading-relaxed">Part 6's lesson was <em>knowledge needs enforcement</em> — but what it enforced was code shape. Today four sibling rules, each born from a dated failure, each wired to a gate, enforce something harder: that a claim is <em>true</em>. Don't say "done" without a running artifact. Don't act on a finding the artifact outgrew. Don't outrun your source. And don't call something false because you checked the wrong place. Two of those run below.</p>
+        <p class="text-slate-300 leading-relaxed">Part 6's lesson was <em>knowledge needs enforcement</em>. But what it enforced was code shape. Today four sibling rules, each born from a dated failure, each wired to a gate, enforce something harder: that a claim is <em>true</em>. Don't say "done" without a running artifact. Don't act on a finding the artifact outgrew. Don't outrun your source. And don't call something false because you checked the wrong place. Two of those run below.</p>
       </div>
       <div class="glass rounded-xl p-5">
         <div class="flex items-baseline gap-3 mb-2"><span class="mono text-indigo-300 font-semibold">03 · evolve</span><span class="text-slate-500 text-sm">the harness improves itself, gated</span></div>
-        <p class="text-slate-300 leading-relaxed">Salesforce AI Research published <a href="https://arxiv.org/abs/2608.07545" target="_blank" rel="noopener">DarwinX</a> and open-sourced the framework, Beagle. The idea in one line: make an agent better without retraining — freeze the model, evolve the harness by selection, keep a change only if it improves and doesn't regress. I ran it, then turned its discipline inward: my voice guard is now scored on a held-out corpus and <em>gated</em>. That gate is the second thing you can run below.</p>
+        <p class="text-slate-300 leading-relaxed">Salesforce AI Research published <a href="https://arxiv.org/abs/2608.07545" target="_blank" rel="noopener">DarwinX</a> and open-sourced the framework, Beagle. The idea in one line: make an agent better without retraining. Freeze the model, evolve the harness by selection, keep a change only if it improves and doesn't regress. I ran it, then turned its discipline inward: my voice guard is now scored on a held-out corpus and <em>gated</em>. That gate is the second thing you can run below.</p>
       </div>
     </div>
-    <p class="text-sm text-slate-500 mt-5 leading-relaxed">Cutting across all three: a connector fabric of ~28 MCP servers live this session — the reach that lets the planes touch real systems. That was Part 3, grown up.</p>
+    <p class="text-sm text-slate-500 mt-5 leading-relaxed">Cutting across all three: a connector fabric of ~28 MCP servers live this session. That's the reach that lets the planes touch real systems, and it's Part 3 grown up.</p>
   </section>
 
   <!-- DEMO 1 — LIVE VOICE GUARD -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-emerald mb-2">Run it · 1 of 4</div>
     <h2 class="text-2xl font-bold mb-3">The voice guard, live</h2>
-    <p class="text-slate-300 leading-relaxed mb-5">This is the real scorer that runs on everything I write — both layers: a generic AI-writing detector for the 0–100 score, plus my own voice overlay for the tells I can't stop making (announced hedges, aphorism cadences I don't actually use). Exact code, ported verbatim, no network. Paste anything, or try a sample.</p>
+    <p class="text-slate-300 leading-relaxed mb-5">This is the real scorer that runs on everything I write, both layers: a generic AI-writing detector for the 0–100 score, plus my own voice overlay for the tells I can't stop making (announced hedges, aphorism cadences I don't actually use). Exact code, ported verbatim, no network. Paste anything, or try a sample.</p>
     <div class="flex flex-wrap gap-2 mb-3">
       <button type="button" data-sample="slop" class="text-xs mono px-3 py-1.5 rounded-md border border-line hover:border-red text-slate-300 hover:text-red transition">try slop</button>
       <button type="button" data-sample="clean" class="text-xs mono px-3 py-1.5 rounded-md border border-line hover:border-emerald text-slate-300 hover:text-emerald transition">try clean</button>
@@ -89,14 +99,14 @@ tailwind.config = { theme: { extend: {
     </div>
     <textarea id="vg-in" rows="5" class="w-full rounded-lg bg-ink border border-line p-4 text-sm text-slate-200 leading-relaxed focus:border-cyan focus:ring-1 focus:ring-cyan outline-none" placeholder="Paste a paragraph and watch the guard read it…"></textarea>
     <div id="vg-out" class="mt-4"></div>
-    <p class="text-xs text-slate-500 mt-3">This is the whole pipeline, not a sketch of it: the 2,386-line generic AI-writing detector (the 0–100 score) <em>and</em> my voice overlay (the hard-bans — 28 words, 18 phrases, 19 structural patterns), both ported verbatim and running in your browser with no network. Same verdict my command line gives.</p>
+    <p class="text-xs text-slate-500 mt-3">This is the whole pipeline, not a sketch of it: the 2,386-line generic AI-writing detector (the 0–100 score) <em>and</em> my voice overlay (the hard-bans: 28 words, 18 phrases, 19 structural patterns), both ported verbatim and running in your browser with no network. Same verdict my command line gives.</p>
   </section>
 
   <!-- DEMO 2 — THE GATE -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-indigo-300 mb-2">Run it · 2 of 4</div>
     <h2 class="text-2xl font-bold mb-3">The preserve-and-extend gate</h2>
-    <p class="text-slate-300 leading-relaxed mb-5">This is how the harness admits a change to itself, borrowed from DarwinX. A proposed change is scored on a <span class="text-emerald">tune</span> set and a held-out set. Admit it only if it gains on tune <em>and</em> doesn't regress the held-out set past a small budget. Drag the sliders — then try to sneak through a change that looks great on average but quietly breaks the held-out set.</p>
+    <p class="text-slate-300 leading-relaxed mb-5">This is how the harness admits a change to itself, borrowed from DarwinX. A proposed change is scored on a <span class="text-emerald">tune</span> set and a held-out set. Admit it only if it gains on tune <em>and</em> doesn't regress the held-out set past a small budget. Drag the sliders, then try to sneak through a change that looks great on average but quietly breaks the held-out set.</p>
     <div class="glass rounded-xl p-6">
       <div class="grid sm:grid-cols-2 gap-6 mb-6">
         <div>
@@ -116,14 +126,14 @@ tailwind.config = { theme: { extend: {
         <button type="button" id="g-overfit" class="ml-auto text-xs mono px-3 py-1.5 rounded-md border border-line hover:border-amber text-slate-400 hover:text-amber transition">show me an overfit</button>
       </div>
     </div>
-    <p class="text-xs text-slate-500 mt-3">Real math against the live baseline (tune 51.7 / held-out 33.5, δ=5): <span class="mono">admit iff g&gt;0 AND R≤δ</span>, where <span class="mono">R = max(0, −held-out Δ)</span>. The overfit case is the whole lesson — a gain that costs you elsewhere gets refused.</p>
+    <p class="text-xs text-slate-500 mt-3">Real math against the live baseline (tune 51.7 / held-out 33.5, δ=5): <span class="mono">admit iff g&gt;0 AND R≤δ</span>, where <span class="mono">R = max(0, −held-out Δ)</span>. The overfit case is the whole lesson: a gain that costs you elsewhere gets refused.</p>
   </section>
 
   <!-- DEMO 3 — RIGHT ORACLE -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-emerald mb-2">Run it · 3 of 4</div>
     <h2 class="text-2xl font-bold mb-3">The right oracle for the right claim</h2>
-    <p class="text-slate-300 leading-relaxed mb-5">The sharpest of the verify rules: before you call something false, ask where it would be true <em>if</em> it were. Absence from a source that wouldn't carry the claim proves nothing. Here's a claim — pick where you'd check it.</p>
+    <p class="text-slate-300 leading-relaxed mb-5">The sharpest of the verify rules: before you call something false, ask where it would be true <em>if</em> it were. Absence from a source that wouldn't carry the claim proves nothing. Here's a claim. Pick where you'd check it.</p>
     <div class="glass rounded-xl p-6">
       <div class="mono text-sm text-slate-200 mb-1">Claim under audit:</div>
       <div class="text-slate-100 mb-5 leading-relaxed">"Acme Corp was hit with a new securities class-action lawsuit last week."</div>
@@ -156,24 +166,24 @@ tailwind.config = { theme: { extend: {
   <!-- THE HONEST PART -->
   <section class="fade-up">
     <h2 class="text-2xl font-bold mb-4">Where this is thin</h2>
-    <p class="text-slate-300 leading-relaxed mb-4">The self-verify half is mature and load-bearing — four rules, four wired gates, used every session. The self-<em>evolve</em> half is real but early: one measured guard, one benchmark task the agent actually missed (the gate correctly rejected it), and correction loops that mostly propose rather than act. So the title says "evolving," present tense, not "evolved."</p>
-    <p class="text-slate-300 leading-relaxed mb-4">The verifier is a proxy — it scores slop and voice-law, not whether the writing is true or persuasive. Optimizing any proxy hard enough eventually games it, which is exactly why the held-out gate exists and why the guard earns "better at catching my known tells," not "objectively better writing."</p>
-    <p class="text-slate-300 leading-relaxed">And the sharpest one: until the day I wrote this, the tooling that makes all of this measurable had no version history — the folder wasn't even tracked. A harness that preaches "prove it, and don't trust a stale finding" wasn't applying either rule to itself. That's fixed now. It's also the most honest thing in this whole series: the drift you saw in the last demo is the system's natural entropy, and the answer isn't faith — it's a periodic, adversarial audit of your own machine.</p>
+    <p class="text-slate-300 leading-relaxed mb-4">The self-verify half is mature and load-bearing: four rules, four wired gates, used every session. The self-<em>evolve</em> half is real but early: one measured guard, one benchmark task the agent actually missed (the gate correctly rejected it), and correction loops that mostly propose rather than act. So the title says "evolving," present tense, not "evolved."</p>
+    <p class="text-slate-300 leading-relaxed mb-4">The verifier is a proxy. It scores slop and voice-law, not whether the writing is true or persuasive. Optimizing any proxy hard enough eventually games it, which is exactly why the held-out gate exists and why the guard earns "better at catching my known tells," not "objectively better writing."</p>
+    <p class="text-slate-300 leading-relaxed">And the sharpest one: until the day I wrote this, the tooling that makes all of this measurable had no version history. The folder wasn't even tracked. A harness that preaches "prove it, and don't trust a stale finding" wasn't applying either rule to itself. That's fixed now. It's also the most honest thing in this whole series: the drift you saw in the last demo is the system's natural entropy, and the answer isn't faith. It's a periodic, adversarial audit of your own machine.</p>
   </section>
 
   <!-- SELF-SCORE CLOSE -->
   <section class="fade-up">
     <div class="glass rounded-xl p-6 text-center">
       <div class="mono text-xs tracking-widest uppercase text-cyan mb-3">the dogfood</div>
-      <p class="text-slate-300 leading-relaxed mb-4">This page argues you shouldn't assert what you can measure. So it measured its own copy with the guard from the first demo — live, on load:</p>
+      <p class="text-slate-300 leading-relaxed mb-4">This page argues you shouldn't assert what you can measure. So it measured its own copy with the guard from the first demo, live, on load:</p>
       <div id="self-score" class="mono text-lg"></div>
-      <p class="text-xs text-slate-500 mt-3">The guard flagged my own tells while I wrote this — one of them on this very page. I cut them. That's the loop.</p>
+      <p class="text-xs text-slate-500 mt-3">The guard flagged my own tells while I wrote this, including one on this very page. I cut them. That's the loop.</p>
     </div>
   </section>
 
   <footer class="fade-up border-t border-line pt-8 text-sm text-slate-500">
-    <p class="mb-2">Context Engineering — a series on giving Claude durable context. Parts 1–6: memory, Agent Script, MCP, the knowledge graph, skills, and the operating system.</p>
-    <p>Part 7 references <a href="https://arxiv.org/abs/2608.07545" target="_blank" rel="noopener">DarwinX (arXiv 2608.07545)</a> and its open-source framework Beagle. Everything interactive here runs locally in your browser — no data leaves the page.</p>
+    <p class="mb-2">Context Engineering: a series on giving Claude durable context. Parts 1–6: memory, Agent Script, MCP, the knowledge graph, skills, and the operating system.</p>
+    <p>Part 7 references <a href="https://arxiv.org/abs/2608.07545" target="_blank" rel="noopener">DarwinX (arXiv 2608.07545)</a> and its open-source framework Beagle. Everything interactive here runs locally in your browser. No data leaves the page.</p>
   </footer>
 
 </main>
