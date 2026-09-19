@@ -77,7 +77,7 @@ tailwind.config = { theme: { extend: {
       </div>
       <div class="glass rounded-xl p-5">
         <div class="flex items-baseline gap-3 mb-2"><span class="mono text-emerald font-semibold">02 · verify</span><span class="text-slate-500 text-sm">the harness checks the truth of its own claims</span></div>
-        <p class="text-slate-300 leading-relaxed">Part 6's lesson was <em>knowledge needs enforcement</em>. But what it enforced was code shape. Today four sibling rules, each born from a dated failure, each wired to a gate, enforce something harder: that a claim is <em>true</em>. Don't say "done" without a running artifact. Don't act on a finding the artifact outgrew. Don't outrun your source. And don't call something false because you checked the wrong place. Two of those run below.</p>
+        <p class="text-slate-300 leading-relaxed">Part 6's lesson was <em>knowledge needs enforcement</em>. But what it enforced was code shape. Today four sibling rules, each born from a dated failure in real customer or account work (sanitized on this page), each wired to a gate, enforce something harder: that a claim is <em>true</em>. Don't say "done" without a running artifact. Don't act on a finding the artifact outgrew. Don't outrun your source. And don't call something false because you checked the wrong place. Two of those run below.</p>
       </div>
       <div class="glass rounded-xl p-5">
         <div class="flex items-baseline gap-3 mb-2"><span class="mono text-indigo-300 font-semibold">03 · evolve</span><span class="text-slate-500 text-sm">the harness improves itself, gated</span></div>
@@ -163,7 +163,17 @@ tailwind.config = { theme: { extend: {
     </div>
   </section>
 
-  <!-- THE HONEST PART -->
+  <!-- WHERE THESE CAME FROM — the deal-work origin -->
+  <section class="fade-up">
+    <h2 class="text-2xl font-bold mb-4">Where these came from</h2>
+    <p class="text-slate-300 leading-relaxed mb-4">I didn't design the verify plane. It's scar tissue.</p>
+    <p class="text-slate-300 leading-relaxed mb-4">Every rule behind those demos was forced by real customer work going wrong in a specific, dated way. A capability claim in a customer Support handoff got written toward the reassuring version instead of what the source actually said. An account audit called a batch of real facts "fabricated" because it checked them against a filing that would never list them (that's the check you just ran, sanitized: it was a real account, and 13 of 15 "fabrications" turned out to be true). An account brief invented dollar figures when the data regenerated underneath it. The account-research platform quietly wrote zero rows for six weeks while every code review called it done.</p>
+    <p class="text-slate-300 leading-relaxed mb-4">Three of those four are customer-facing artifacts. The harness learned to check the truth of a claim because a claim reached a customer, or nearly did, and was wrong. Each failure became a rule, and each rule became a wired gate. The tidy "four rules born from a dated failure" up in the verify plane has a concrete origin, and it isn't a lab exercise: the deal work burned me first.</p>
+    <p class="text-slate-300 leading-relaxed mb-4">It's where the other two planes live too. Operate, in a deal, means every product claim gets grounded in a cited corpus before it reaches a customer, and opening an account's Slack channel or writing into a deal folder auto-fires the reminder to do it. Verify means a territory number traces to one source of record behind a gate that turns red on a wrong figure. This is how the account work gets done now, because of how it used to break.</p>
+    <p class="text-sm text-slate-500 leading-relaxed">One caveat: I can show you the rules and their dated origins, but the deal domain they guard is private, so what's here is the pattern, not the accounts. And whether every gate fires on a live brief this morning is something I'd prove by running it, not by showing you a file.</p>
+  </section>
+
+  <!-- LIMITS -->
   <section class="fade-up">
     <h2 class="text-2xl font-bold mb-4">Where this is thin</h2>
     <p class="text-slate-300 leading-relaxed mb-4">The self-verify half is mature and load-bearing: four rules, four wired gates, used every session. The self-<em>evolve</em> half is real but early: one measured guard, one benchmark task the agent actually missed (the gate correctly rejected it), and correction loops that mostly propose rather than act. So the title says "evolving," present tense, not "evolved."</p>
