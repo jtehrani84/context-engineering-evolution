@@ -12,64 +12,138 @@
 <script>
 tailwind.config = { theme: { extend: {
   fontFamily: { sans: ['Inter','system-ui','sans-serif'], mono: ['JetBrains Mono','monospace'] },
-  colors: { ink: '#0b1120', card: '#111a2e', line: '#1e2b45', cyan: '#22d3ee', emerald: '#34d399', amber: '#fbbf24', red: '#f87171' },
+  colors: { ink: '#0b1120', card: '#111a2e', line: '#1e2b45', cyan: '#60a5fa', emerald: '#34d399', amber: '#fbbf24', red: '#f87171' },
 }}}
 </script>
 <style>
-  body{font-family:'Inter',system-ui,sans-serif;background:#0b1120;color:#e2e8f0;-webkit-font-smoothing:antialiased}
+  body{font-family:'Inter',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;-webkit-font-smoothing:antialiased}
   .mono{font-family:'JetBrains Mono',monospace}
-  .glass{background:rgba(17,26,46,.7);border:1px solid #1e2b45;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .glass{background:rgba(30,41,59,.6);border:1px solid rgba(148,163,184,.1);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+  .hero-gradient{background:radial-gradient(ellipse at 30% 40%,rgba(167,139,250,.12) 0%,transparent 50%),radial-gradient(ellipse at 72% 15%,rgba(96,165,250,.1) 0%,transparent 50%),linear-gradient(180deg,#0f172a 0%,#1e293b 100%)}
   .fade-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
   .fade-up.in{opacity:1;transform:none}
-  .grad{background:linear-gradient(120deg,#22d3ee 0%,#34d399 55%,#818cf8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .grad{background:linear-gradient(135deg,#60a5fa 0%,#a78bfa 50%,#34d399 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .kbd{font-family:'JetBrains Mono',monospace;font-size:.72rem;background:#0b1120;border:1px solid #1e2b45;border-radius:4px;padding:1px 6px;color:#94a3b8}
   .flag{background:rgba(248,113,113,.14);border-bottom:2px solid #f87171;border-radius:2px;padding:0 1px}
   input[type=range]{-webkit-appearance:none;height:4px;background:#1e2b45;border-radius:3px;outline:none}
-  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#22d3ee;cursor:pointer;border:2px solid #0b1120}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#60a5fa;cursor:pointer;border:2px solid #0b1120}
   textarea{font-family:'JetBrains Mono',monospace}
   ::selection{background:rgba(34,211,238,.25)}
-  a{color:#22d3ee}
+  a{color:#60a5fa}
   .pulse-dot{animation:pulsedot 2s ease-in-out infinite}
   @keyframes pulsedot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(52,211,153,.5)}50%{opacity:.5;box-shadow:0 0 0 4px rgba(52,211,153,0)}}
+  .plane,.vlayer{transition:transform .18s ease}
+  .plane:hover,.plane:focus,.vlayer:hover,.vlayer:focus{transform:translateY(-3px)}
+  /* keep the prose a readable measure while figures + demos fill the wide frame */
+  main > section > p, main > section > h2, main > section > h3, main > footer > p{max-width:48rem}
 </style>
 </head>
 <body class="antialiased">
 
 <!-- nav -->
-<nav class="sticky top-0 z-40 border-b border-line/70" style="background:rgba(11,17,32,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)">
-  <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-2 h-2 rounded-full bg-emerald pulse-dot"></div>
-      <span class="text-sm font-medium text-slate-400">Context Engineering Series</span>
-      <span class="text-slate-600 mx-1">/</span>
-      <span class="text-sm font-semibold text-slate-200">Part 7</span>
-    </div>
-    <div class="flex items-center gap-4">
-      <a href="https://jtehrani84.github.io/context-engineering-skills/" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-cyan transition-colors hidden sm:inline">Part 5: Skills &rarr;</a>
-      <a href="https://jtehrani84.github.io/claude-context-architecture/from-memory-to-operating-system.html" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-cyan transition-colors">Part 6: Operating System &rarr;</a>
+<nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-700/50">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+    <span class="text-sm font-mono text-gray-500">context-engineering <span class="text-blue-400">//</span> part-7</span>
+    <div class="flex items-center gap-3 sm:gap-5 text-xs text-gray-500">
+      <a href="https://jtehrani84.github.io/claude-context-architecture/" class="hover:text-gray-300 transition-colors hidden sm:inline">Part 1</a>
+      <a href="https://jtehrani84.github.io/context-engineering-agentscript/" class="hover:text-gray-300 transition-colors hidden sm:inline">Part 2</a>
+      <a href="https://jtehrani84.github.io/context-engineering-mcp/" class="hover:text-gray-300 transition-colors hidden md:inline">Part 3</a>
+      <a href="https://jtehrani84.github.io/context-engineering-knowledge-graph/" class="hover:text-gray-300 transition-colors hidden md:inline">Part 4</a>
+      <a href="https://jtehrani84.github.io/context-engineering-skills/" class="hover:text-gray-300 transition-colors">Part 5</a>
+      <a href="https://jtehrani84.github.io/claude-context-architecture/from-memory-to-operating-system.html" class="hover:text-gray-300 transition-colors">Part 6</a>
+      <span class="text-blue-400 font-semibold">Part 7</span>
     </div>
   </div>
 </nav>
 
 <!-- hero -->
-<header class="max-w-3xl mx-auto px-5 pt-20 pb-14">
-  <div class="mono text-xs tracking-[0.2em] uppercase text-cyan mb-5">Part 7 · Evolution</div>
-  <h1 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight mb-6">
-    From Operating System to <span class="grad">Evolving Harness</span>
-  </h1>
-  <p class="text-lg text-slate-300 leading-relaxed mb-4">
-    The first six parts were about what you <em>feed</em> an agent, from memory and MCP to a knowledge graph, skills, and Agent Script. Part 6 ended on the autonomy peak, approve at 10 PM and deployed by 7 AM, me still at the laptop.
-  </p>
-  <p class="text-lg text-slate-300 leading-relaxed">
-    Since then the harness grew three planes. It learned to <span class="text-cyan font-semibold">operate</span> itself, <span class="text-emerald font-semibold">verify</span> itself, and begin to <span class="text-indigo-300 font-semibold">evolve</span> itself. That last one is the frontier, and all of it runs on a frozen model. Four of those systems run right here in your browser; the point of a page about a self-verifying harness is that you get to verify it.
-  </p>
+<header class="hero-gradient relative overflow-hidden min-h-[82vh] flex items-center">
+  <div class="max-w-6xl mx-auto w-full px-6 pt-24 pb-16 relative z-10">
+    <div class="max-w-3xl">
+      <p class="text-purple-400 font-mono text-sm tracking-wider uppercase mb-6 fade-up">Context Engineering Series — Part 7</p>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-8 fade-up stagger-1">
+        From Operating System to <span class="grad">Evolving Harness</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6 fade-up stagger-2">
+        The first six parts were about what you <em>feed</em> an agent — memory, MCP, a knowledge graph, skills, Agent Script. Part 6 ended on the autonomy peak: approve at 10 PM, deployed by 7 AM, me still at the laptop.
+      </p>
+      <p class="text-lg text-slate-400 leading-relaxed fade-up stagger-3">
+        Since then the harness grew three planes — it learned to <span class="text-blue-400 font-semibold">operate</span>, <span class="text-emerald font-semibold">verify</span>, and <span class="text-violet-400 font-semibold">evolve</span> itself, all on a frozen model. Then it went to work on real accounts and hit the one wall it can't detect its way past. Four of these systems run right here in your browser.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-3xl fade-up stagger-4">
+      <div><div class="text-4xl font-bold text-white">3</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">planes</div></div>
+      <div><div class="text-4xl font-bold text-white">4</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">you can run</div></div>
+      <div><div class="text-4xl font-bold text-white">6</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">voice layers</div></div>
+      <div><div class="text-4xl font-bold text-white">0/11</div><div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">mimic caught</div></div>
+    </div>
+  </div>
 </header>
 
-<main class="max-w-3xl mx-auto px-5 pb-24 space-y-24">
+<main class="max-w-5xl mx-auto px-6 pb-24 space-y-28">
 
   <!-- THE THREE PLANES -->
   <section class="fade-up">
     <h2 class="text-2xl font-bold mb-6">Three planes, one frozen model</h2>
+    <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="planes-fig">
+      <svg viewBox="0 0 720 310" class="w-full h-auto" role="img" aria-label="Living diagram: operate, verify, and evolve planes orchestrated around one frozen model, with a recursive loop where the evolve plane improves the harness itself. Hover a plane for detail.">
+        <defs>
+          <marker id="ah" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker>
+          <marker id="ahi" markerWidth="9" markerHeight="9" refX="6" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 Z" fill="#a78bfa"/></marker>
+          <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <text x="360" y="15" text-anchor="middle" fill="#a78bfa" font-size="10.5" class="mono">evolve loops back — the harness improves itself, gated</text>
+        <path d="M590,62 C590,30 555,22 360,22 C165,22 130,30 130,62" stroke="#a78bfa" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#ahi)"><animate attributeName="stroke-dashoffset" from="18" to="0" dur="1.1s" repeatCount="indefinite"/></path>
+        <circle r="3" fill="#a78bfa"><animateMotion dur="3.6s" repeatCount="indefinite" path="M590,62 C590,30 555,22 360,22 C165,22 130,30 130,62"/></circle>
+        <path d="M130,126 L312,200" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M360,126 L360,200" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M590,126 L408,200" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <circle r="3" fill="#60a5fa"><animateMotion dur="2.4s" repeatCount="indefinite" path="M130,126 L312,200"/></circle>
+        <circle r="3" fill="#34d399"><animateMotion dur="2.4s" begin="0.5s" repeatCount="indefinite" path="M360,126 L360,200"/></circle>
+        <circle r="3" fill="#a78bfa"><animateMotion dur="2.4s" begin="1s" repeatCount="indefinite" path="M590,126 L408,200"/></circle>
+        <g class="plane" data-plane="operate" tabindex="0" aria-label="operate plane">
+          <rect x="40" y="62" width="180" height="64" rx="10" fill="rgba(34,211,238,.06)" stroke="#60a5fa" stroke-width="1.2"><animate attributeName="stroke-opacity" values="1;0.5;1" dur="3.2s" repeatCount="indefinite"/></rect>
+          <rect x="54" y="53.5" width="84" height="17" rx="3" fill="#0b1120" stroke="#60a5fa" stroke-width="1"/>
+          <text x="96" y="65.5" text-anchor="middle" fill="#60a5fa" font-size="9" letter-spacing="1" class="mono">01 · OPERATE</text>
+          <text x="58" y="101" fill="#94a3b8" font-size="12.5" class="mono">runs without me</text>
+        </g>
+        <g class="plane" data-plane="verify" tabindex="0" aria-label="verify plane">
+          <rect x="270" y="62" width="180" height="64" rx="10" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1.2"><animate attributeName="stroke-opacity" values="1;0.5;1" dur="3.8s" repeatCount="indefinite"/></rect>
+          <rect x="284" y="53.5" width="76" height="17" rx="3" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+          <text x="322" y="65.5" text-anchor="middle" fill="#34d399" font-size="9" letter-spacing="1" class="mono">02 · VERIFY</text>
+          <text x="288" y="101" fill="#94a3b8" font-size="12.5" class="mono">checks its own claims</text>
+        </g>
+        <g class="plane" data-plane="evolve" tabindex="0" aria-label="evolve plane">
+          <rect x="500" y="62" width="180" height="64" rx="10" fill="rgba(129,140,248,.06)" stroke="#a78bfa" stroke-width="1.2"><animate attributeName="stroke-opacity" values="1;0.5;1" dur="3.5s" repeatCount="indefinite"/></rect>
+          <rect x="514" y="53.5" width="78" height="17" rx="3" fill="#0b1120" stroke="#a78bfa" stroke-width="1"/>
+          <text x="553" y="65.5" text-anchor="middle" fill="#a78bfa" font-size="9" letter-spacing="1" class="mono">03 · EVOLVE</text>
+          <text x="518" y="101" fill="#94a3b8" font-size="12.5" class="mono">improves itself, gated</text>
+        </g>
+        <rect x="200" y="200" width="320" height="62" rx="10" fill="rgba(148,163,184,.05)" stroke="#475569" stroke-width="1.5"/>
+        <text x="360" y="230" text-anchor="middle" fill="#e2e8f0" font-size="15.5" font-weight="700">frozen model</text>
+        <text x="360" y="250" text-anchor="middle" fill="#64748b" font-size="10.5" class="mono">you don't retrain it · swap any frontier model into it</text>
+      </svg>
+      <div id="plane-detail" class="mono text-xs text-slate-400 mt-3 min-h-[1.1rem]" aria-live="polite">hover or tap a plane to see what runs in it</div>
+      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">The three planes orchestrate around a model I don't own or retrain — it's a socket. Only the harness changes. <span class="text-violet-400">Evolve</span> is the recursive loop: it scores and gates changes to the harness itself on a held-out set, so it can't quietly get worse.</figcaption>
+    </figure>
+    <script>
+      (function(){
+        const P = {
+          operate: 'operate · 12 scheduled jobs (4 live) — overnight gather, morning brief, action-plan close, grounding reseed, memory prune',
+          verify: 'verify · four sibling proof rules, four wired gates — they check a claim is true, not just well-shaped',
+          evolve: 'evolve · DarwinX turned inward — the voice guard is scored on a held-out corpus and gated, so it can only improve',
+        };
+        const detail = document.getElementById('plane-detail');
+        if (detail) document.querySelectorAll('#planes-fig .plane').forEach(g => {
+          const rect = g.querySelector('rect');
+          g.style.cursor = 'pointer';
+          const on = () => { detail.textContent = P[g.dataset.plane]; rect.setAttribute('filter', 'url(#glow)'); rect.setAttribute('stroke-width', '2.2'); };
+          const off = () => { rect.removeAttribute('filter'); rect.setAttribute('stroke-width', '1.2'); };
+          g.addEventListener('mouseenter', on); g.addEventListener('mouseleave', off);
+          g.addEventListener('focus', on); g.addEventListener('blur', off);
+        });
+      })();
+    </script>
     <div class="space-y-4">
       <div class="glass rounded-xl p-5">
         <div class="flex items-baseline gap-3 mb-2"><span class="mono text-cyan font-semibold">01 · operate</span><span class="text-slate-500 text-sm">the harness runs without me</span></div>
@@ -80,7 +154,7 @@ tailwind.config = { theme: { extend: {
         <p class="text-slate-300 leading-relaxed">Part 6's lesson was <em>knowledge needs enforcement</em>, but what it enforced was code shape. Today four sibling rules, each born from a dated failure in real customer or account work (sanitized on this page) and each wired to a gate, enforce something harder than shape. They check that a claim is actually <em>true</em>. Don't say "done" without a running artifact. Don't act on a finding the artifact has already outgrown. Don't outrun the source you're citing. And don't call something false because you checked the wrong place, which is why two of those run below.</p>
       </div>
       <div class="glass rounded-xl p-5">
-        <div class="flex items-baseline gap-3 mb-2"><span class="mono text-indigo-300 font-semibold">03 · evolve</span><span class="text-slate-500 text-sm">the harness improves itself, gated</span></div>
+        <div class="flex items-baseline gap-3 mb-2"><span class="mono text-violet-400 font-semibold">03 · evolve</span><span class="text-slate-500 text-sm">the harness improves itself, gated</span></div>
         <p class="text-slate-300 leading-relaxed">Salesforce AI Research published <a href="https://arxiv.org/abs/2608.07545" target="_blank" rel="noopener">DarwinX</a> and open-sourced the framework, Beagle. The idea, in one line, is to make an agent better without retraining. Freeze the model, evolve the harness by selection, and keep a change only if it improves and doesn't regress. I ran it, then turned that discipline inward, so my voice guard is now scored on a held-out corpus and <em>gated</em>. That gate is the second thing you can run below.</p>
       </div>
     </div>
@@ -92,6 +166,80 @@ tailwind.config = { theme: { extend: {
     <div class="mono text-xs tracking-widest uppercase text-emerald mb-2">Run it · 1 of 4</div>
     <h2 class="text-2xl font-bold mb-3">The voice guard, live</h2>
     <p class="text-slate-300 leading-relaxed mb-5">This is the real scorer that runs on everything I write, and it runs both layers. There's a generic AI-writing detector for the 0–100 score, plus my own voice overlay for the tells I can't stop making (announced hedges, aphorism cadences I don't actually use). The exact code is ported verbatim, with no network call, so paste anything or try a sample.</p>
+    <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="vlayer-fig">
+      <div class="mono text-xs tracking-widest uppercase text-emerald mb-3">The six layers this scorer runs</div>
+      <svg viewBox="0 0 720 352" class="w-full h-auto" role="img" aria-label="The voice guard's six layers — L0 provenance through L5 gestalt judge — and the rule that a text is clean only if the deterministic stack and the judge both pass. Hover a layer for detail.">
+        <defs><filter id="vglow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <rect x="30" width="600" height="2" fill="#60a5fa" opacity="0.5"><animate attributeName="y" values="16;294;16" dur="9s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.12;0.55;0.12" dur="9s" repeatCount="indefinite"/></rect>
+        <g class="vlayer" data-layer="0" tabindex="0" aria-label="Layer 0 provenance">
+          <rect x="30" y="16" width="600" height="40" rx="8" fill="rgba(251,191,36,.06)" stroke="#fbbf24" stroke-width="1.1"/>
+          <rect x="44" y="8" width="102" height="16" rx="3" fill="#0b1120" stroke="#fbbf24" stroke-width="1"/>
+          <text x="95" y="19.5" text-anchor="middle" class="mono" fill="#fbbf24" font-size="8.5" letter-spacing="0.8">L0 · PROVENANCE</text>
+          <text x="48" y="43" class="mono" fill="#94a3b8" font-size="11">metadata leaks — homoglyphs, utm=chatgpt, [Your Name]</text>
+          <text x="612" y="43" text-anchor="end" class="mono" fill="#64748b" font-size="9.5">dispositive</text>
+        </g>
+        <g class="vlayer" data-layer="1" tabindex="0" aria-label="Layer 1 lexical">
+          <rect x="30" y="64" width="600" height="40" rx="8" fill="rgba(52,211,153,.05)" stroke="#34d399" stroke-width="1.1"/>
+          <rect x="44" y="56" width="80" height="16" rx="3" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+          <text x="84" y="67.5" text-anchor="middle" class="mono" fill="#34d399" font-size="8.5" letter-spacing="0.8">L1 · LEXICAL</text>
+          <text x="48" y="91" class="mono" fill="#94a3b8" font-size="11">banned words — generic list + my 28-word overlay</text>
+          <text x="612" y="91" text-anchor="end" class="mono" fill="#64748b" font-size="9.5">deterministic</text>
+        </g>
+        <g class="vlayer" data-layer="2" tabindex="0" aria-label="Layer 2 structure">
+          <rect x="30" y="112" width="600" height="40" rx="8" fill="rgba(52,211,153,.05)" stroke="#34d399" stroke-width="1.1"/>
+          <rect x="44" y="104" width="94" height="16" rx="3" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+          <text x="91" y="115.5" text-anchor="middle" class="mono" fill="#34d399" font-size="8.5" letter-spacing="0.8">L2 · STRUCTURE</text>
+          <text x="48" y="139" class="mono" fill="#94a3b8" font-size="11">formulaic openers, hedges, aphorism families</text>
+          <text x="612" y="139" text-anchor="end" class="mono" fill="#64748b" font-size="9.5">deterministic</text>
+        </g>
+        <g class="vlayer" data-layer="3" tabindex="0" aria-label="Layer 3 cadence">
+          <rect x="30" y="160" width="600" height="40" rx="8" fill="rgba(52,211,153,.05)" stroke="#34d399" stroke-width="1.1"/>
+          <rect x="44" y="152" width="84" height="16" rx="3" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+          <text x="86" y="163.5" text-anchor="middle" class="mono" fill="#34d399" font-size="8.5" letter-spacing="0.8">L3 · CADENCE</text>
+          <text x="48" y="187" class="mono" fill="#94a3b8" font-size="11">colon-reveal, "X, not Y", staccato runs</text>
+          <text x="612" y="187" text-anchor="end" class="mono" fill="#64748b" font-size="9.5">density-gated</text>
+        </g>
+        <g class="vlayer" data-layer="4" tabindex="0" aria-label="Layer 4 stylometry">
+          <rect x="30" y="208" width="600" height="40" rx="8" fill="rgba(52,211,153,.05)" stroke="#34d399" stroke-width="1.1"/>
+          <rect x="44" y="200" width="100" height="16" rx="3" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+          <text x="94" y="211.5" text-anchor="middle" class="mono" fill="#34d399" font-size="8.5" letter-spacing="0.8">L4 · STYLOMETRY</text>
+          <text x="48" y="235" class="mono" fill="#94a3b8" font-size="11">length variance · burstiness · entropy</text>
+          <text x="612" y="235" text-anchor="end" class="mono" fill="#64748b" font-size="9.5">weak on strong models</text>
+        </g>
+        <g class="vlayer" data-layer="5" tabindex="0" aria-label="Layer 5 gestalt judge">
+          <rect x="30" y="256" width="600" height="40" rx="8" fill="rgba(129,140,248,.07)" stroke="#a78bfa" stroke-width="1.1"/>
+          <rect x="44" y="248" width="120" height="16" rx="3" fill="#0b1120" stroke="#a78bfa" stroke-width="1"/>
+          <text x="104" y="259.5" text-anchor="middle" class="mono" fill="#a78bfa" font-size="8.5" letter-spacing="0.8">L5 · GESTALT JUDGE</text>
+          <text x="48" y="283" class="mono" fill="#94a3b8" font-size="11">reads like an expert who sees model output all day</text>
+          <text x="612" y="283" text-anchor="end" class="mono" fill="#a78bfa" font-size="9.5">can veto</text>
+        </g>
+        <rect x="170" y="306" width="380" height="34" rx="8" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1.2"/>
+        <text x="360" y="328" text-anchor="middle" class="mono" fill="#34d399" font-size="11">CLEAN only if the stack (L0–L4) AND the judge (L5) pass</text>
+      </svg>
+      <div id="vlayer-detail" class="mono text-xs text-slate-400 mt-3 min-h-[1.1rem]" aria-live="polite">hover a layer to see what it catches</div>
+      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">Five deterministic layers run free in your browser — that's the demo below. The sixth, the gestalt judge, is the only one that reads at the document level and the only one that can <span class="text-violet-400">veto</span> a clean score. That's why a low number alone isn't a pass.</figcaption>
+    </figure>
+    <script>
+      (function(){
+        const L = {
+          0: 'L0 provenance — homoglyphs, zero-width chars, utm_source=chatgpt, "[Your Name]" placeholders. One hit and it is AI, full stop.',
+          1: 'L1 lexical — the generic banned-word detector plus my own overlay of ~28 words I overuse.',
+          2: 'L2 structure — formulaic openers, the announced-hedge and aphorism families, the "not just X" tic.',
+          3: 'L3 cadence — colon-reveal "setup: payoff", the "X, not Y" antithesis, staccato runs. Density-gated: one is fine, a pattern fires.',
+          4: 'L4 stylometry — sentence-length variance, burstiness, trigram entropy. Weak on capable models: they vary their stats on demand.',
+          5: 'L5 gestalt judge — reads the way an applied-AI scientist does. One model call, and the only layer that can veto a clean deterministic score.',
+        };
+        const d = document.getElementById('vlayer-detail');
+        if (d) document.querySelectorAll('#vlayer-fig .vlayer').forEach(g => {
+          const rect = g.querySelector('rect');
+          g.style.cursor = 'pointer';
+          const on = () => { d.textContent = L[g.dataset.layer]; rect.setAttribute('filter', 'url(#vglow)'); rect.setAttribute('stroke-width', '2'); };
+          const off = () => { rect.removeAttribute('filter'); rect.setAttribute('stroke-width', '1.1'); };
+          g.addEventListener('mouseenter', on); g.addEventListener('mouseleave', off);
+          g.addEventListener('focus', on); g.addEventListener('blur', off);
+        });
+      })();
+    </script>
     <div class="flex flex-wrap gap-2 mb-3">
       <button type="button" data-sample="slop" class="text-xs mono px-3 py-1.5 rounded-md border border-line hover:border-red text-slate-300 hover:text-red transition">try slop</button>
       <button type="button" data-sample="clean" class="text-xs mono px-3 py-1.5 rounded-md border border-line hover:border-emerald text-slate-300 hover:text-emerald transition">try clean</button>
@@ -104,9 +252,41 @@ tailwind.config = { theme: { extend: {
 
   <!-- DEMO 2 — THE GATE -->
   <section class="fade-up">
-    <div class="mono text-xs tracking-widest uppercase text-indigo-300 mb-2">Run it · 2 of 4</div>
+    <div class="mono text-xs tracking-widest uppercase text-violet-400 mb-2">Run it · 2 of 4</div>
     <h2 class="text-2xl font-bold mb-3">The preserve-and-extend gate</h2>
     <p class="text-slate-300 leading-relaxed mb-5">This is how the harness admits a change to itself, borrowed from DarwinX. A proposed change is scored on a <span class="text-emerald">tune</span> set and a held-out set. Admit it only if it gains on tune <em>and</em> doesn't regress the held-out set past a small budget. Drag the sliders, then try to sneak through a change that looks great on average but quietly breaks the held-out set.</p>
+    <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="evolve-fig">
+      <div class="mono text-xs tracking-widest uppercase text-violet-400 mb-3">The loop the slider below lives inside</div>
+      <svg viewBox="0 0 720 250" class="w-full h-auto" role="img" aria-label="The DarwinX-style evolution loop: propose a change to the harness, score it on a tune set and a held-out set, gate it — admit only if it gains on tune and does not regress the held-out set past a small budget, otherwise drop it — and fold only admitted changes back into the harness.">
+        <defs>
+          <marker id="eah" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker>
+          <marker id="eahg" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#34d399"/></marker>
+          <marker id="eahr" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f87171"/></marker>
+          <filter id="eglow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <g><rect x="46" y="30" width="200" height="56" rx="10" fill="rgba(96,165,250,.06)" stroke="#60a5fa" stroke-width="1.2"/>
+          <text x="146" y="54" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="600">propose a change</text>
+          <text x="146" y="72" text-anchor="middle" fill="#64748b" font-size="10" class="mono">rule · prompt · routing · model</text></g>
+        <g><rect x="474" y="30" width="200" height="56" rx="10" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1.2"/>
+          <text x="574" y="54" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="600">score it</text>
+          <text x="574" y="72" text-anchor="middle" fill="#64748b" font-size="10" class="mono">tune set + held-out set</text></g>
+        <g><rect x="474" y="164" width="200" height="56" rx="10" fill="rgba(251,191,36,.06)" stroke="#fbbf24" stroke-width="1.2"/>
+          <text x="574" y="188" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="600">gate</text>
+          <text x="574" y="206" text-anchor="middle" fill="#94a3b8" font-size="10.5" class="mono">g&gt;0 AND R≤δ</text></g>
+        <g><rect x="46" y="164" width="200" height="56" rx="10" fill="rgba(129,140,248,.06)" stroke="#a78bfa" stroke-width="1.2"/>
+          <text x="146" y="188" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="600">the harness</text>
+          <text x="146" y="206" text-anchor="middle" fill="#64748b" font-size="10" class="mono">only better versions land</text></g>
+        <path d="M246,58 L470,58" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#eah)"/>
+        <path d="M574,86 L574,160" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#eah)"/>
+        <path d="M474,196 L250,196" stroke="#34d399" stroke-width="1.6" fill="none" marker-end="url(#eahg)"/>
+        <text x="362" y="188" text-anchor="middle" fill="#34d399" font-size="10" class="mono">admit</text>
+        <path d="M146,160 L146,90" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#eah)"/>
+        <path d="M680,192 C704,192 704,132 690,122" stroke="#f87171" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#eahr)"/>
+        <text x="702" y="152" text-anchor="middle" fill="#f87171" font-size="10" class="mono" transform="rotate(90 702 152)">reject → dropped</text>
+        <circle r="3.5" fill="#34d399" filter="url(#eglow)"><animateMotion dur="5s" repeatCount="indefinite" path="M146,58 L574,58 L574,196 L146,196 L146,58"/></circle>
+      </svg>
+      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">Freeze the model, change only the harness, keep a change <span class="text-emerald">only</span> if it improves without regressing. The slider below is this gate with its guard rails exposed.</figcaption>
+    </figure>
     <div class="glass rounded-xl p-6">
       <div class="grid sm:grid-cols-2 gap-6 mb-6">
         <div>
@@ -117,7 +297,7 @@ tailwind.config = { theme: { extend: {
         <div>
           <div class="flex justify-between text-sm mb-2"><span class="text-cyan mono">held-out Δ</span><span id="g-held-v" class="mono text-slate-300">0.0</span></div>
           <input id="g-held" type="range" min="-20" max="20" step="0.5" value="0" class="w-full" aria-label="held-out-set fitness change">
-          <div class="text-xs text-slate-500 mt-1 mono">baseline 33.5 to <span id="g-held-abs">33.5</span></div>
+          <div class="text-xs text-slate-500 mt-1 mono">baseline 24.3 to <span id="g-held-abs">24.3</span></div>
         </div>
       </div>
       <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-line">
@@ -126,7 +306,7 @@ tailwind.config = { theme: { extend: {
         <button type="button" id="g-overfit" class="ml-auto text-xs mono px-3 py-1.5 rounded-md border border-line hover:border-amber text-slate-400 hover:text-amber transition">show me an overfit</button>
       </div>
     </div>
-    <p class="text-xs text-slate-500 mt-3">Here's the real math against the live baseline (tune 51.7 / held-out 33.5, δ=5). The rule is <span class="mono">admit iff g&gt;0 AND R≤δ</span>, where <span class="mono">R = max(0, −held-out Δ)</span>. The overfit case is the whole lesson, because a gain that costs you elsewhere gets refused.</p>
+    <p class="text-xs text-slate-500 mt-3">Here's the real math against the live baseline (tune 51.7 / held-out 24.3, δ=5). The rule is <span class="mono">admit iff g&gt;0 AND R≤δ</span>, where <span class="mono">R = max(0, −held-out Δ)</span>. The overfit case is the whole lesson, because a gain that costs you elsewhere gets refused.</p>
   </section>
 
   <!-- DEMO 3 — RIGHT ORACLE -->
@@ -167,6 +347,55 @@ tailwind.config = { theme: { extend: {
   <section class="fade-up">
     <h2 class="text-2xl font-bold mb-4">Where these came from</h2>
     <p class="text-slate-300 leading-relaxed mb-4">I didn't design the verify plane. It's scar tissue.</p>
+    <figure class="glass rounded-xl p-4 sm:p-6 my-6" id="scar-fig">
+      <div class="grid grid-cols-3 gap-2 mono text-[10px] tracking-widest uppercase mb-2">
+        <div class="text-red">a dated failure</div><div class="text-blue-400 text-center">the rule it forced</div><div class="text-emerald text-right">the wired gate</div>
+      </div>
+      <svg viewBox="0 0 720 312" class="w-full h-auto" role="img" aria-label="Four dated failures from real work, each forcing one verify rule and one wired gate. A Support handoff written toward the reassuring version forced claims-faithful-to-source and the claim-faithfulness gate. An audit that called thirteen real facts fabricated forced refutation-needs-the-right-oracle and the refutation-oracle gate. A brief that invented dollar figures when its data regenerated forced findings-are-perishable and a stale-finding re-verify. A platform that wrote zero rows for six weeks while every code review said done forced proof-before-claim and an execution proof.">
+        <defs><marker id="sah" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5.5,3 L0,6 Z" fill="#475569"/></marker></defs>
+        <!-- row 1 -->
+        <g><rect x="12" y="20" width="238" height="56" rx="9" fill="rgba(248,113,113,.07)" stroke="#f87171" stroke-width="1.1"/>
+          <text x="131" y="44" text-anchor="middle" fill="#e2e8f0" font-size="11">Support handoff written toward</text>
+          <text x="131" y="61" text-anchor="middle" fill="#94a3b8" font-size="11">the reassuring version</text></g>
+        <path d="M250,48 L270,48" stroke="#475569" stroke-width="1.4" marker-end="url(#sah)"/>
+        <rect x="272" y="24" width="176" height="48" rx="8" fill="rgba(96,165,250,.06)" stroke="#60a5fa" stroke-width="1.1"/>
+        <text x="360" y="52" text-anchor="middle" fill="#60a5fa" font-size="10.5" class="mono">claims-faithful-to-source</text>
+        <path d="M448,48 L468,48" stroke="#475569" stroke-width="1.4" marker-end="url(#sah)"/>
+        <rect x="470" y="24" width="238" height="48" rx="8" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1.1"/>
+        <text x="589" y="52" text-anchor="middle" fill="#34d399" font-size="10.5" class="mono">claim-faithfulness-gate</text>
+        <!-- row 2 -->
+        <g><rect x="12" y="92" width="238" height="56" rx="9" fill="rgba(248,113,113,.07)" stroke="#f87171" stroke-width="1.1"/>
+          <text x="131" y="116" text-anchor="middle" fill="#e2e8f0" font-size="11">Audit called 13 real facts</text>
+          <text x="131" y="133" text-anchor="middle" fill="#94a3b8" font-size="11">&#8220;fabricated&#8221;</text></g>
+        <path d="M250,120 L270,120" stroke="#475569" stroke-width="1.4" marker-end="url(#sah)"/>
+        <rect x="272" y="96" width="176" height="48" rx="8" fill="rgba(96,165,250,.06)" stroke="#60a5fa" stroke-width="1.1"/>
+        <text x="360" y="124" text-anchor="middle" fill="#60a5fa" font-size="9.3" class="mono">refutation-needs-the-right-oracle</text>
+        <path d="M448,120 L468,120" stroke="#475569" stroke-width="1.4" marker-end="url(#sah)"/>
+        <rect x="470" y="96" width="238" height="48" rx="8" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1.1"/>
+        <text x="589" y="124" text-anchor="middle" fill="#34d399" font-size="10.5" class="mono">refutation-oracle-gate</text>
+        <!-- row 3 -->
+        <g><rect x="12" y="164" width="238" height="56" rx="9" fill="rgba(248,113,113,.07)" stroke="#f87171" stroke-width="1.1"/>
+          <text x="131" y="188" text-anchor="middle" fill="#e2e8f0" font-size="11">Brief invented $ figures when</text>
+          <text x="131" y="205" text-anchor="middle" fill="#94a3b8" font-size="11">the data regenerated under it</text></g>
+        <path d="M250,192 L270,192" stroke="#475569" stroke-width="1.4" marker-end="url(#sah)"/>
+        <rect x="272" y="168" width="176" height="48" rx="8" fill="rgba(96,165,250,.06)" stroke="#60a5fa" stroke-width="1.1"/>
+        <text x="360" y="196" text-anchor="middle" fill="#60a5fa" font-size="10.5" class="mono">findings-are-perishable</text>
+        <path d="M448,192 L468,192" stroke="#475569" stroke-width="1.4" marker-end="url(#sah)"/>
+        <rect x="470" y="168" width="238" height="48" rx="8" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1.1"/>
+        <text x="589" y="196" text-anchor="middle" fill="#34d399" font-size="10.5" class="mono">stale-finding re-verify</text>
+        <!-- row 4 -->
+        <g><rect x="12" y="236" width="238" height="56" rx="9" fill="rgba(248,113,113,.07)" stroke="#f87171" stroke-width="1.1"/>
+          <text x="131" y="260" text-anchor="middle" fill="#e2e8f0" font-size="11">Platform wrote 0 rows for 6 wks —</text>
+          <text x="131" y="277" text-anchor="middle" fill="#94a3b8" font-size="11">every code review said done</text></g>
+        <path d="M250,264 L270,264" stroke="#475569" stroke-width="1.4" marker-end="url(#sah)"/>
+        <rect x="272" y="240" width="176" height="48" rx="8" fill="rgba(96,165,250,.06)" stroke="#60a5fa" stroke-width="1.1"/>
+        <text x="360" y="268" text-anchor="middle" fill="#60a5fa" font-size="10.5" class="mono">proof-before-claim</text>
+        <path d="M448,264 L468,264" stroke="#475569" stroke-width="1.4" marker-end="url(#sah)"/>
+        <rect x="470" y="240" width="238" height="48" rx="8" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1.1"/>
+        <text x="589" y="268" text-anchor="middle" fill="#34d399" font-size="10.5" class="mono">execution / deploy proof</text>
+      </svg>
+      <figcaption class="mono text-xs text-slate-500 mt-3 leading-relaxed">Each of these four rules has a birthday. The demos above run three of them, and the origin isn't a lab exercise — the deal work burned me first.</figcaption>
+    </figure>
     <p class="text-slate-300 leading-relaxed mb-4">Every rule behind those demos was forced by real customer work going wrong in a specific, dated way. A capability claim in a customer Support handoff got written toward the reassuring version instead of what the source actually said. An account audit called a batch of real facts "fabricated" because it checked them against a filing that would never list them (that's the check you just ran, sanitized — it was a real account, and 13 of 15 "fabrications" turned out to be true). An account brief invented dollar figures when the data regenerated underneath it. The account-research platform quietly wrote zero rows for six weeks while every code review called it done.</p>
     <p class="text-slate-300 leading-relaxed mb-4">Three of those four are customer-facing artifacts. The harness learned to check the truth of a claim because a claim reached a customer, or nearly did, and was wrong. Each failure became a rule, and each rule became a wired gate. The tidy "four rules born from a dated failure" up in the verify plane has a concrete origin, and it isn't a lab exercise, because the deal work burned me first.</p>
     <p class="text-slate-300 leading-relaxed mb-4">It's where the other two planes live too. Operate, in a deal, means every product claim gets grounded in a cited corpus before it reaches a customer, and opening an account's Slack channel or writing into a deal folder auto-fires the reminder to do it. Verify means a territory number traces to one source of record behind a gate that turns red on a wrong figure. This is how the account work gets done now, because of how it used to break.</p>
@@ -181,11 +410,53 @@ tailwind.config = { theme: { extend: {
     <p class="text-slate-300 leading-relaxed">The sharpest gap is that until the day I wrote this, the tooling that makes all of this measurable had no version history, and the folder wasn't even tracked. A harness that preaches "prove it, and don't trust a stale finding" wasn't applying either rule to itself, which is fixed now. And it's the most honest thing in this whole series, because the drift you saw in the last demo is the system's natural entropy, and the answer isn't faith. It's a periodic, adversarial audit of your own machine.</p>
   </section>
 
+  <!-- THE CEILING — mimic + provenance (merged arms-race finding) -->
+  <section class="fade-up">
+    <div class="mono text-xs tracking-widest uppercase text-amber mb-2">The ceiling</div>
+    <h2 class="text-2xl font-bold mb-3">I tried to grade my own writing</h2>
+    <p class="text-slate-300 leading-relaxed mb-5">The evolve plane already scores my writing for AI tells — that's the guard from the first demo. So I asked whether it could catch AI pretending to be <em>me</em>. I built the test aimed straight at the guard's blind spot, answering the same questions in my own register, lowercase, with my phrasing and my analogies. Call each of these before you read the numbers.</p>
+    <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="mimic-fig">
+      <div class="mono text-xs tracking-widest uppercase text-amber mb-3">How far text-only detection gets you</div>
+      <svg viewBox="0 0 720 240" class="w-full h-auto" role="img" aria-label="How far text-only detection gets you: generic AI slop is caught strongly, paraphrased AI mostly, but AI written in my own voice scores near zero — the detector is blind there. The gate that still holds is provenance: who actually typed it.">
+        <text x="200" y="24" fill="#64748b" font-size="10" class="mono">how confidently the detector calls it AI  →</text>
+        <text x="18" y="62" fill="#94a3b8" font-size="11.5">generic AI slop</text>
+        <rect x="200" y="46" width="450" height="30" rx="6" fill="rgba(148,163,184,.06)"/>
+        <rect x="200" y="46" height="30" rx="6" fill="#34d399" opacity="0.85"><animate attributeName="width" from="0" to="410" dur="1.1s" fill="freeze"/></rect>
+        <text x="646" y="65" text-anchor="end" fill="#0b1120" font-size="10" class="mono">caught 11/13</text>
+        <text x="18" y="114" fill="#94a3b8" font-size="11.5">paraphrased AI</text>
+        <rect x="200" y="98" width="450" height="30" rx="6" fill="rgba(148,163,184,.06)"/>
+        <rect x="200" y="98" height="30" rx="6" fill="#34d399" opacity="0.7"><animate attributeName="width" from="0" to="300" dur="1.1s" begin="0.2s" fill="freeze"/></rect>
+        <text x="516" y="117" fill="#34d399" font-size="10" class="mono">mostly caught</text>
+        <text x="18" y="166" fill="#f87171" font-size="11.5">AI in my voice</text>
+        <rect x="200" y="150" width="450" height="30" rx="6" fill="rgba(148,163,184,.06)"/>
+        <rect x="200" y="150" height="30" rx="6" fill="#f87171"><animate attributeName="width" from="0" to="18" dur="1.1s" begin="0.4s" fill="freeze"/></rect>
+        <text x="228" y="169" fill="#f87171" font-size="10" class="mono">0/11 · the detector is blind here</text>
+        <rect x="18" y="198" width="632" height="34" rx="8" fill="rgba(251,191,36,.06)" stroke="#fbbf24" stroke-width="1.1"/>
+        <text x="334" y="219" text-anchor="middle" fill="#fbbf24" font-size="11.5" class="mono">the gate that still holds: provenance — who actually typed it</text>
+      </svg>
+      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">Three sample sets, scored by the same guard. The bar shrinks to nothing exactly where the mimic gets good — there's no tell left in the text to catch.</figcaption>
+    </figure>
+    <div class="mb-6" id="mimic-demo">
+      <div class="mono text-xs tracking-widest uppercase text-amber mb-3">Spot the mimic · human or machine?</div>
+      <p class="text-slate-400 text-sm leading-relaxed mb-4">Three short answers to Salesforce questions, each written by an AI told to answer in my voice. A person, or a machine imitating one?</p>
+      <div id="mimic-rounds" class="space-y-3"></div>
+      <div id="mimic-result" class="hidden mt-4 rounded-lg bg-ink border border-line p-4"></div>
+    </div>
+    <p class="text-slate-300 leading-relaxed mb-4">The consensus of three language-model judges caught obvious AI 11 times out of 13, and never once flagged my real writing as fake. Against AI wearing my voice it went 0 for 11. Every judge rated the imitation as human.</p>
+    <div class="grid sm:grid-cols-3 gap-3 text-sm mb-5">
+      <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-emerald text-xs mb-1">obvious AI</div><div class="text-slate-300">caught <span class="mono">11/13</span> · <span class="mono">0/12</span> false positives on my real writing</div></div>
+      <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-amber text-xs mb-1">AI in my voice</div><div class="text-slate-300">caught <span class="mono">0/11</span> — the judges rated it human</div></div>
+      <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-red text-xs mb-1">the twist</div><div class="text-slate-300">a same-author judge rated the fake <span class="mono">more me than me</span> — 83.1 vs 82.8</div></div>
+    </div>
+    <p class="text-slate-300 leading-relaxed mb-4">Then I found a signal that seemed to fix it. A cheap deterministic check flipped the score to 11 out of 11 on the imitations, and for an afternoon it looked solved. It wasn't. The check keyed on a punctuation habit the imitation over-applied, and a one-line instruction to the imitator erased it — back to 0 out of 7 on an adaptive version. Worse, a dumb "is this longer than forty words" rule scored identically to my sophisticated one, because the real thing separating the two sets was length, not voice. I'd built a detector for my own test, not for imitation, which is the exact Part 7 lesson committed again by the person who wrote the warning.</p>
+    <p class="text-slate-300 leading-relaxed">So the answer isn't a better detector. When the imitation is short, in my register, grounded in things I actually say, there's no signal left in the text, and asking a blind checker "is this John?" is the wrong oracle for the question. The durable defense is provenance: who actually typed it. The guard still earns its keep, catching every lazy imitation for free and never flagging my real work, but past the point where a mimic knows the guard exists, knowing where the words came from beats judging the words. That ceiling is worth naming out loud, because the failure mode isn't missing a mimic — it's a "clean" verdict on the one input built to earn it.</p>
+  </section>
+
   <!-- SELF-SCORE CLOSE -->
   <section class="fade-up">
     <div class="glass rounded-xl p-6 text-center">
       <div class="mono text-xs tracking-widest uppercase text-cyan mb-3">the dogfood</div>
-      <p class="text-slate-300 leading-relaxed mb-4">This page argues you shouldn't assert what you can measure. So it measured its own copy with the guard from the first demo, live, on load:</p>
+      <p class="text-slate-300 leading-relaxed mb-4">This page argues you should measure a claim, not just assert it. So it measured its own copy with the guard from the first demo, live, on load:</p>
       <div id="self-score" class="mono text-lg"></div>
       <p class="text-xs text-slate-500 mt-3">The guard flagged my own tells while I wrote this, including one on this very page, so I cut them. That's the loop.</p>
     </div>
@@ -2730,7 +3001,7 @@ document.querySelectorAll('[data-sample]').forEach(b=>b.addEventListener('click'
 /* ---------------------------------------------------------------------------
    DEMO 2 — the preserve-and-extend gate
    --------------------------------------------------------------------------- */
-const BASE_TUNE=51.7, BASE_HELD=33.5, DELTA=5;
+const BASE_TUNE=51.7, BASE_HELD=24.3, DELTA=5;
 const gTune=document.getElementById('g-tune'), gHeld=document.getElementById('g-held');
 function renderGate(){
   const dt=parseFloat(gTune.value), dh=parseFloat(gHeld.value);
@@ -2805,6 +3076,56 @@ function selfScore(){
 /* fade-up on scroll */
 const io = new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
 document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+
+/* ---------------------------------------------------------------------------
+   SPOT THE MIMIC — the identity ceiling, interactive. Samples are AI-generated
+   in John's register (public-safe: no PII, no deal/account data). Numbers are
+   the gated Bet 14 result (0/11 on adaptive mimics; same-author 83.1 vs 82.8).
+   --------------------------------------------------------------------------- */
+(function(){
+  const MIMIC = [
+    { q: 'on "with sharing" vs field security', t: "salesforce is the harness, but with sharing only locks down record visibility. it leaves object and field security entirely up to us." },
+    { q: "on querying child records", t: "use a nested select for the child. the loop is the differentiator that compounds up to five levels deep." },
+    { q: "on what platform events are for", t: "platform events decouple systems so publishers broadcast payloads and subscribers react. trust first, then consumption ramps." },
+  ];
+  const wrap = document.getElementById('mimic-rounds');
+  if (!wrap) return;
+  let done = 0, calledMachine = 0;
+  MIMIC.forEach((m, i) => {
+    const row = document.createElement('div');
+    row.className = 'rounded-lg bg-ink border border-line p-4';
+    row.innerHTML =
+      '<div class="mono text-xs text-slate-500 mb-2">answer ' + (i+1) + ' · ' + m.q + '</div>' +
+      '<p class="text-slate-200 leading-relaxed mb-3">' + m.t + '</p>' +
+      '<div class="flex flex-wrap gap-2 items-center">' +
+        '<button class="mimic-btn mono text-xs px-3 py-1.5 rounded border border-line text-slate-300 hover:border-cyan transition-colors" data-c="person">a person wrote this</button>' +
+        '<button class="mimic-btn mono text-xs px-3 py-1.5 rounded border border-line text-slate-300 hover:border-cyan transition-colors" data-c="machine">a machine wrote this</button>' +
+        '<span class="verdict mono text-xs ml-auto"></span>' +
+      '</div>';
+    wrap.appendChild(row);
+    const btns = row.querySelectorAll('.mimic-btn');
+    const verdict = row.querySelector('.verdict');
+    btns.forEach(b => b.addEventListener('click', () => {
+      if (row.dataset.answered) return;
+      row.dataset.answered = '1';
+      if (b.dataset.c === 'machine') calledMachine++;
+      btns.forEach(x => { x.disabled = true; x.classList.add('opacity-40'); });
+      b.classList.remove('opacity-40');
+      b.classList.add(b.dataset.c === 'machine' ? 'border-emerald' : 'border-red');
+      verdict.textContent = 'it was a machine, writing as me';
+      verdict.className = 'verdict mono text-xs ml-auto ' + (b.dataset.c === 'machine' ? 'text-emerald' : 'text-red');
+      if (++done === MIMIC.length) reveal();
+    }));
+  });
+  function reveal(){
+    const box = document.getElementById('mimic-result');
+    box.classList.remove('hidden');
+    box.innerHTML =
+      '<p class="text-slate-300 leading-relaxed mb-2">You called <span class="mono text-emerald">' + calledMachine + '</span> of 3 as a machine. All three were machines, told to write as me.</p>' +
+      '<p class="text-slate-400 text-sm leading-relaxed">That’s the <em>easy</em> version. In the real test, three frontier language-model judges — voting together — went <span class="mono text-red">0 for 11</span> on imitations like these, rating the machine human every time. A same-author check even scored one fake as <span class="mono text-red">more &ldquo;me&rdquo; than my own writing</span> — 83.1 vs 82.8. When the imitation is short and in my register, there is no tell left in the text.</p>';
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
 
 /* init */
 renderGate(); renderDrift(); selfScore();
