@@ -60,15 +60,15 @@ tailwind.config = { theme: { extend: {
 <header class="hero-gradient relative overflow-hidden min-h-[82vh] flex items-center">
   <div class="max-w-6xl mx-auto w-full px-6 pt-24 pb-16 relative z-10">
     <div class="max-w-3xl">
-      <p class="text-purple-400 font-mono text-sm tracking-wider uppercase mb-6 fade-up">Context Engineering Series — Part 7</p>
+      <p class="text-purple-400 font-mono text-sm tracking-wider uppercase mb-6 fade-up">Context Engineering Series · Part 7</p>
       <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-8 fade-up stagger-1">
         From Operating System to <span class="grad">Evolving Harness</span>
       </h1>
       <p class="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6 fade-up stagger-2">
-        The first six parts were about what you <em>feed</em> an agent — memory, MCP, a knowledge graph, skills, Agent Script. Part 6 ended on the autonomy peak: approve at 10 PM, deployed by 7 AM, me still at the laptop.
+        The first six parts were about what you <em>feed</em> an agent: memory, MCP, a knowledge graph, skills, Agent Script. Part 6 ended on the autonomy peak, approve at 10 PM, deployed by 7 AM, me still at the laptop.
       </p>
       <p class="text-lg text-slate-400 leading-relaxed fade-up stagger-3">
-        Since then the harness grew three planes — it learned to <span class="text-blue-400 font-semibold">operate</span>, <span class="text-emerald font-semibold">verify</span>, and <span class="text-violet-400 font-semibold">evolve</span> itself, all on a frozen model. Then it went to work on real accounts and hit the one wall it can't detect its way past. Four of these systems run right here in your browser.
+        Since then the harness grew three planes, and it learned to <span class="text-blue-400 font-semibold">operate</span>, <span class="text-emerald font-semibold">verify</span>, and <span class="text-violet-400 font-semibold">evolve</span> itself, all on a frozen model. Then it went to work on real accounts and hit the one wall it can't detect its way past. Four of these systems run right here in your browser.
       </p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-3xl fade-up stagger-4">
@@ -124,14 +124,14 @@ tailwind.config = { theme: { extend: {
         <text x="360" y="250" text-anchor="middle" fill="#64748b" font-size="10.5" class="mono">you don't retrain it · swap any frontier model into it</text>
       </svg>
       <div id="plane-detail" class="mono text-xs text-slate-400 mt-3 min-h-[1.1rem]" aria-live="polite">hover or tap a plane to see what runs in it</div>
-      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">The three planes orchestrate around a model I don't own or retrain — it's a socket. Only the harness changes. <span class="text-violet-400">Evolve</span> is the recursive loop: it scores and gates changes to the harness itself on a held-out set, so it can't quietly get worse.</figcaption>
+      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">The three planes orchestrate around a model I don't own or retrain, so it's a socket. Only the harness changes. <span class="text-violet-400">Evolve</span> is the recursive loop: it scores and gates changes to the harness itself on a held-out set, so it can't quietly get worse.</figcaption>
     </figure>
     <script>
       (function(){
         const P = {
-          operate: 'operate · 12 scheduled jobs (4 live) — overnight gather, morning brief, action-plan close, grounding reseed, memory prune',
-          verify: 'verify · four sibling proof rules, four wired gates — they check a claim is true, not just well-shaped',
-          evolve: 'evolve · DarwinX turned inward — the voice guard is scored on a held-out corpus and gated, so it can only improve',
+          operate: 'operate · 12 scheduled jobs (4 live): overnight gather, morning brief, action-plan close, grounding reseed, memory prune',
+          verify: 'verify · four sibling proof rules, four wired gates that check a claim is true, not just well-shaped',
+          evolve: 'evolve · DarwinX turned inward. The voice guard is scored on a held-out corpus and gated, so it can only improve',
         };
         const detail = document.getElementById('plane-detail');
         if (detail) document.querySelectorAll('#planes-fig .plane').forEach(g => {
@@ -217,17 +217,17 @@ tailwind.config = { theme: { extend: {
         <text x="360" y="328" text-anchor="middle" class="mono" fill="#34d399" font-size="11">CLEAN only if the stack (L0–L4) AND the judge (L5) pass</text>
       </svg>
       <div id="vlayer-detail" class="mono text-xs text-slate-400 mt-3 min-h-[1.1rem]" aria-live="polite">hover a layer to see what it catches</div>
-      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">Five deterministic layers run free in your browser — that's the demo below. The sixth, the gestalt judge, is the only one that reads at the document level and the only one that can <span class="text-violet-400">veto</span> a clean score. That's why a low number alone isn't a pass.</figcaption>
+      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">Five deterministic layers run free in your browser. That's the demo below. The sixth, the gestalt judge, is the only one that reads at the document level and the only one that can <span class="text-violet-400">veto</span> a clean score. That's why a low number alone isn't a pass.</figcaption>
     </figure>
     <script>
       (function(){
         const L = {
-          0: 'L0 provenance — homoglyphs, zero-width chars, utm_source=chatgpt, "[Your Name]" placeholders. One hit and it is AI, full stop.',
-          1: 'L1 lexical — the generic banned-word detector plus my own overlay of ~28 words I overuse.',
-          2: 'L2 structure — formulaic openers, the announced-hedge and aphorism families, the "not just X" tic.',
-          3: 'L3 cadence — colon-reveal "setup: payoff", the "X, not Y" antithesis, staccato runs. Density-gated: one is fine, a pattern fires.',
-          4: 'L4 stylometry — sentence-length variance, burstiness, trigram entropy. Weak on capable models: they vary their stats on demand.',
-          5: 'L5 gestalt judge — reads the way an applied-AI scientist does. One model call, and the only layer that can veto a clean deterministic score.',
+          0: 'L0 provenance: homoglyphs, zero-width chars, utm_source=chatgpt, "[Your Name]" placeholders. One hit and it is AI, full stop.',
+          1: 'L1 lexical: the generic banned-word detector plus my own overlay of ~28 words I overuse.',
+          2: 'L2 structure: formulaic openers, the announced-hedge and aphorism families, the "not just X" tic.',
+          3: 'L3 cadence: colon-reveal "setup: payoff", the "X, not Y" antithesis, staccato runs. Density-gated: one is fine, a pattern fires.',
+          4: 'L4 stylometry: sentence-length variance, burstiness, trigram entropy. Weak on capable models: they vary their stats on demand.',
+          5: 'L5 gestalt judge: reads the way an applied-AI scientist does. One model call, and the only layer that can veto a clean deterministic score.',
         };
         const d = document.getElementById('vlayer-detail');
         if (d) document.querySelectorAll('#vlayer-fig .vlayer').forEach(g => {
@@ -313,7 +313,7 @@ tailwind.config = { theme: { extend: {
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-violet-400 mb-2">What the gate gates</div>
     <h2 class="text-2xl font-bold mb-3">The same gate, on real ability</h2>
-    <p class="text-slate-300 leading-relaxed mb-5">The slider you just dragged isn't a toy — it's wired to a real fitness signal built from four published methods. An applied-AI scientist at Amazon pointed me at them, and they map cleanly onto the DarwinX loop. Meta-Knowledge prepares the context, VERA scores the output with an honest bound, ECHO attributes which step failed, and DEEVO optimizes where there's no gold answer — score a change, gate it, keep it only if it actually improves.</p>
+    <p class="text-slate-300 leading-relaxed mb-5">The slider you just dragged isn't a toy, it's wired to a real fitness signal built from four published methods. An applied-AI scientist at Amazon pointed me at them, and they map cleanly onto the DarwinX loop. Meta-Knowledge prepares the context, VERA scores the output with an honest bound, ECHO attributes which step failed, and DEEVO optimizes where there's no gold answer. Score a change, gate it, and keep it only if it actually improves.</p>
     <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="lifecycle-fig">
       <div class="mono text-xs tracking-widest uppercase text-violet-400 mb-3">Four papers, one measured loop</div>
       <svg viewBox="0 0 720 150" class="w-full h-auto" role="img" aria-label="The four-paper agentic-quality lifecycle wired to the DarwinX gate: Meta-Knowledge prepares the context, VERA evaluates with an honest bound, ECHO attributes the failing step, DEEVO optimizes it, and the preserve-and-extend gate admits the change only if it improves.">
@@ -341,7 +341,7 @@ tailwind.config = { theme: { extend: {
       </svg>
       <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">Four published methods, reduced to running code and wired to one gate. The names are the method; the number below is what the method measured.</figcaption>
     </figure>
-    <p class="text-slate-300 leading-relaxed mb-5">That loop runs on two surfaces. One is the voice guard from the first demo — small-n, my own labeled corpus. The other is code, where the labels number in the hundreds and the bound is statistically real. That surface is a full SWE-bench Verified rollout through Salesforce AI Research's Beagle/DarwinX framework, on my own GCP.</p>
+    <p class="text-slate-300 leading-relaxed mb-5">That loop runs on two surfaces. One is the voice guard from the first demo, small-n, my own labeled corpus. The other is code, where the labels number in the hundreds and the bound is statistically real. That surface is a full SWE-bench Verified rollout through Salesforce AI Research's Beagle/DarwinX framework, on my own GCP.</p>
     <div class="glass rounded-xl p-6 mb-4">
       <div class="mono text-xs tracking-widest uppercase text-emerald mb-3">SWE-bench Verified · the coding gate baseline</div>
       <div class="flex flex-wrap items-baseline gap-x-6 gap-y-1 mb-4">
@@ -349,9 +349,9 @@ tailwind.config = { theme: { extend: {
         <div class="mono text-sm text-slate-300">95% bootstrap CI [86.0%, 91.4%]</div>
         <div class="mono text-sm text-slate-500">n=500 · no-hints · 444 resolved</div>
       </div>
-      <p class="text-sm text-slate-400 leading-relaxed">And the bounds that keep it honest, because this is the number an expert will probe. What's being scored is <span class="text-slate-200">stock mini-swe</span> — no harness lifts a model to 88.8%, so this isn't a claim about my harness at all. It's a 2026 model run against a 2023 public benchmark, so contamination is baked in. That makes it a <span class="text-slate-200">gate baseline</span>, where a harness change earns its place only when its lower bound beats this, and it doesn't belong on a leaderboard. VERA earns its cite as the method here — fold-to-one-score with an honest bound, the discipline behind how the 88.8% is reported.</p>
+      <p class="text-sm text-slate-400 leading-relaxed">And the bounds that keep it honest, because this is the number an expert will probe. What's being scored is <span class="text-slate-200">stock mini-swe</span>, and no harness lifts a model to 88.8%, so this isn't a claim about my harness at all. It's a 2026 model run against a 2023 public benchmark, so contamination is baked in. That makes it a <span class="text-slate-200">gate baseline</span>, where a harness change earns its place only when its lower bound beats this, and it doesn't belong on a leaderboard. VERA earns its cite as the method here, fold-to-one-score with an honest bound, the discipline behind how the 88.8% is reported.</p>
     </div>
-    <p class="text-slate-300 leading-relaxed">The scope is worth being plain about. The <em>selection</em> half is live — propose a change, score it on both surfaces, admit it only through the gate. The <em>generation</em> half, an evolver that writes its own candidate changes, I still drive by hand. So this is eval-and-gate; the machine doesn't write its own changes yet, and "evolving" is the present tense on purpose.</p>
+    <p class="text-slate-300 leading-relaxed">The scope is worth being plain about. The <em>selection</em> half is live. Propose a change, score it on both surfaces, and admit it only through the gate. The <em>generation</em> half, an evolver that writes its own candidate changes, I still drive by hand. So this is eval-and-gate; the machine doesn't write its own changes yet, and "evolving" is the present tense on purpose.</p>
   </section>
 
   <!-- DEMO 3 — RIGHT ORACLE -->
@@ -439,9 +439,9 @@ tailwind.config = { theme: { extend: {
         <rect x="470" y="240" width="238" height="48" rx="8" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1.1"/>
         <text x="589" y="268" text-anchor="middle" fill="#34d399" font-size="10.5" class="mono">execution / deploy proof</text>
       </svg>
-      <figcaption class="mono text-xs text-slate-500 mt-3 leading-relaxed">Each of these four rules has a birthday. The demos above run three of them, and the origin isn't a lab exercise — the deal work burned me first.</figcaption>
+      <figcaption class="mono text-xs text-slate-500 mt-3 leading-relaxed">Each of these four rules has a birthday. The demos above run three of them, and the origin isn't a lab exercise, the deal work burned me first.</figcaption>
     </figure>
-    <p class="text-slate-300 leading-relaxed mb-4">Every rule behind those demos was forced by real customer work going wrong in a specific, dated way. A capability claim in a customer Support handoff got written toward the reassuring version instead of what the source actually said. An account audit called a batch of real facts "fabricated" because it checked them against a filing that would never list them (that's the check you just ran, sanitized — it was a real account, and 13 of 15 "fabrications" turned out to be true). An account brief invented dollar figures when the data regenerated underneath it. The account-research platform quietly wrote zero rows for six weeks while every code review called it done.</p>
+    <p class="text-slate-300 leading-relaxed mb-4">Every rule behind those demos was forced by real customer work going wrong in a specific, dated way. A capability claim in a customer Support handoff got written toward the reassuring version instead of what the source actually said. An account audit called a batch of real facts "fabricated" because it checked them against a filing that would never list them (that's the check you just ran, sanitized, it was a real account, and 13 of 15 "fabrications" turned out to be true). An account brief invented dollar figures when the data regenerated underneath it. The account-research platform quietly wrote zero rows for six weeks while every code review called it done.</p>
     <p class="text-slate-300 leading-relaxed mb-4">Three of those four are customer-facing artifacts. The harness learned to check the truth of a claim because a claim reached a customer, or nearly did, and was wrong. Each failure became a rule, and each rule became a wired gate. The tidy "four rules born from a dated failure" up in the verify plane has a concrete origin, and it isn't a lab exercise, because the deal work burned me first.</p>
     <p class="text-slate-300 leading-relaxed mb-4">It's where the other two planes live too. Operate, in a deal, means every product claim gets grounded in a cited corpus before it reaches a customer, and opening an account's Slack channel or writing into a deal folder auto-fires the reminder to do it. Verify means a territory number traces to one source of record behind a gate that turns red on a wrong figure. This is how the account work gets done now, because of how it used to break.</p>
     <p class="text-sm text-slate-500 leading-relaxed">The caveat is that I can show you the rules and their dated origins, but the deal domain they guard is private, so what's here is the pattern rather than the accounts themselves. And whether every gate fires on a live brief this morning is something I'd prove by running it, rather than by showing you a file.</p>
@@ -459,7 +459,7 @@ tailwind.config = { theme: { extend: {
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-amber mb-2">The ceiling</div>
     <h2 class="text-2xl font-bold mb-3">I tried to grade my own writing</h2>
-    <p class="text-slate-300 leading-relaxed mb-5">The evolve plane already scores my writing for AI tells — that's the guard from the first demo. So I asked whether it could catch AI pretending to be <em>me</em>. I built the test aimed straight at the guard's blind spot, answering the same questions in my own register, lowercase, with my phrasing and my analogies. Call each of these before you read the numbers.</p>
+    <p class="text-slate-300 leading-relaxed mb-5">The evolve plane already scores my writing for AI tells, and that's the guard from the first demo. So I asked whether it could catch AI pretending to be <em>me</em>. I built the test aimed straight at the guard's blind spot, answering the same questions in my own register, lowercase, with my phrasing and my analogies. Call each of these before you read the numbers.</p>
     <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="mimic-fig">
       <div class="mono text-xs tracking-widest uppercase text-amber mb-3">How far text-only detection gets you</div>
       <svg viewBox="0 0 720 240" class="w-full h-auto" role="img" aria-label="How far text-only detection gets you: generic AI slop is caught strongly, paraphrased AI mostly, but AI written in my own voice scores near zero — the detector is blind there. The gate that still holds is provenance: who actually typed it.">
@@ -479,7 +479,7 @@ tailwind.config = { theme: { extend: {
         <rect x="18" y="198" width="632" height="34" rx="8" fill="rgba(251,191,36,.06)" stroke="#fbbf24" stroke-width="1.1"/>
         <text x="334" y="219" text-anchor="middle" fill="#fbbf24" font-size="11.5" class="mono">the gate that still holds: provenance — who actually typed it</text>
       </svg>
-      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">Three sample sets, scored by the same guard. The bar shrinks to nothing exactly where the mimic gets good — there's no tell left in the text to catch.</figcaption>
+      <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">Three sample sets, scored by the same guard. The bar shrinks to nothing exactly where the mimic gets good. There's no tell left in the text to catch.</figcaption>
     </figure>
     <div class="mb-6" id="mimic-demo">
       <div class="mono text-xs tracking-widest uppercase text-amber mb-3">Spot the mimic · human or machine?</div>
@@ -490,11 +490,11 @@ tailwind.config = { theme: { extend: {
     <p class="text-slate-300 leading-relaxed mb-4">The consensus of three language-model judges caught obvious AI 11 times out of 13, and never once flagged my real writing as fake. Against AI wearing my voice it went 0 for 11. Every judge rated the imitation as human.</p>
     <div class="grid sm:grid-cols-3 gap-3 text-sm mb-5">
       <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-emerald text-xs mb-1">obvious AI</div><div class="text-slate-300">caught <span class="mono">11/13</span> · <span class="mono">0/12</span> false positives on my real writing</div></div>
-      <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-amber text-xs mb-1">AI in my voice</div><div class="text-slate-300">caught <span class="mono">0/11</span> — the judges rated it human</div></div>
-      <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-red text-xs mb-1">the twist</div><div class="text-slate-300">a same-author judge rated the fake <span class="mono">more me than me</span> — 83.1 vs 82.8</div></div>
+      <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-amber text-xs mb-1">AI in my voice</div><div class="text-slate-300">caught <span class="mono">0/11</span>, the judges rated it human</div></div>
+      <div class="rounded-lg bg-ink border border-line p-3"><div class="mono text-red text-xs mb-1">the twist</div><div class="text-slate-300">a same-author judge rated the fake <span class="mono">more me than me</span>, 83.1 vs 82.8</div></div>
     </div>
-    <p class="text-slate-300 leading-relaxed mb-4">Then I found a signal that seemed to fix it. A cheap deterministic check flipped the score to 11 out of 11 on the imitations, and for an afternoon it looked solved. It wasn't. The check keyed on a punctuation habit the imitation over-applied, and a one-line instruction to the imitator erased it — back to 0 out of 7 on an adaptive version. Worse, a dumb "is this longer than forty words" rule scored identically to my sophisticated one, because the real thing separating the two sets was length, not voice. I'd built a detector for my own test, not for imitation, which is the exact Part 7 lesson committed again by the person who wrote the warning.</p>
-    <p class="text-slate-300 leading-relaxed">So the answer isn't a better detector. When the imitation is short, in my register, grounded in things I actually say, there's no signal left in the text, and asking a blind checker "is this John?" is the wrong oracle for the question. The durable defense is provenance: who actually typed it. The guard still earns its keep, catching every lazy imitation for free and never flagging my real work, but past the point where a mimic knows the guard exists, knowing where the words came from beats judging the words. That ceiling is worth naming out loud, because the failure mode isn't missing a mimic — it's a "clean" verdict on the one input built to earn it.</p>
+    <p class="text-slate-300 leading-relaxed mb-4">Then I found a signal that seemed to fix it. A cheap deterministic check flipped the score to 11 out of 11 on the imitations, and for an afternoon it looked solved. It wasn't. The check keyed on a punctuation habit the imitation over-applied, and a one-line instruction to the imitator erased it, back to 0 out of 7 on an adaptive version. Worse, a dumb "is this longer than forty words" rule scored identically to my sophisticated one, because the real thing separating the two sets was length, not voice. I'd built a detector for my own test, not for imitation, which is the exact Part 7 lesson committed again by the person who wrote the warning.</p>
+    <p class="text-slate-300 leading-relaxed">So the answer isn't a better detector. When the imitation is short, in my register, grounded in things I actually say, there's no signal left in the text, and asking a blind checker "is this John?" is the wrong oracle for the question. The durable defense is provenance: who actually typed it. The guard still earns its keep, catching every lazy imitation for free and never flagging my real work, but past the point where a mimic knows the guard exists, knowing where the words came from beats judging the words. That ceiling is worth naming out loud, because the failure mode isn't missing a mimic, it's a "clean" verdict on the one input built to earn it.</p>
   </section>
 
   <!-- SELF-SCORE CLOSE -->
@@ -509,12 +509,12 @@ tailwind.config = { theme: { extend: {
 
   <!-- SO WHAT — business value / outcome wrap -->
   <section class="fade-up">
-    <h2 class="text-2xl font-bold mb-4">So what — what this is actually worth</h2>
+    <h2 class="text-2xl font-bold mb-4">So what, then: what this is actually worth</h2>
     <p class="text-slate-300 leading-relaxed mb-5">Seven parts have argued one idea, that the harness is the product and the model is a rentable CPU. Here's what that buys, and it lands in three places.</p>
-    <p class="text-slate-300 leading-relaxed mb-4"><span class="text-blue-400 font-semibold">For me and every SE,</span> the harness measurably improved, and it now keeps a change only when it clears a held-out bar, so my own output got better and stopped regressing quietly. It scales past me through the SE Starter Kit, so other SEs can run the same discipline rather than rebuild it. And the next build makes it model-agnostic — the same <span class="mono text-sm">~/.claude</span> config ported onto an open runtime so it runs on GPT, Grok, or Gemini, one harness across every model. That port is planned, not shipped, and I'll show it when it runs.</p>
-    <p class="text-slate-300 leading-relaxed mb-4"><span class="text-emerald font-semibold">For the customer,</span> every enterprise standing up agents hits the same wall — no way to tell whether a change made the agent better, regressions that ship silently, and "eval" that's really a vibe. What's on this page demonstrates the answer rather than describing it. You measure the change, gate the regression before it reaches anyone, evaluate with a bound instead of a vanity number, and prove where an output came from when no detector can. That's an agent-quality and trust conversation, and it opens a bigger door than a feature demo.</p>
-    <p class="text-slate-300 leading-relaxed mb-6"><span class="text-violet-400 font-semibold">For the platform,</span> all of it maps onto where Agentforce is already heading — evaluation (Testing Center), auto-improvement (Agent Optimizer), governance (Agent Fabric) — and the model-agnostic angle is the BYOLLM promise made concrete. A customer's investment in evals, memory, and governance survives every model swap, because it lives in the harness, above the model layer. The harness is the connective tissue between those surfaces.</p>
-    <p class="text-lg text-slate-200 leading-relaxed border-l-2 border-slate-600 pl-5">You can't own the frontier model. What you can own is the harness, the evals, the memory, and the provenance — and unlike the model you rent, those compound.</p>
+    <p class="text-slate-300 leading-relaxed mb-4"><span class="text-blue-400 font-semibold">For me and every SE,</span> the harness measurably improved, and it now keeps a change only when it clears a held-out bar, so my own output got better and stopped regressing quietly. It scales past me through the SE Starter Kit, so other SEs can run the same discipline rather than rebuild it. And the next build makes it model-agnostic, the same <span class="mono text-sm">~/.claude</span> config ported onto an open runtime so it runs on GPT, Grok, or Gemini, one harness across every model. That port is planned, not shipped, and I'll show it when it runs.</p>
+    <p class="text-slate-300 leading-relaxed mb-4"><span class="text-emerald font-semibold">For the customer,</span> every enterprise standing up agents hits the same wall. No way to tell whether a change made the agent better, regressions that ship silently, and "eval" that's really a vibe. What's on this page demonstrates the answer rather than describing it. You measure the change, gate the regression before it reaches anyone, evaluate with a bound instead of a vanity number, and prove where an output came from when no detector can. That's an agent-quality and trust conversation, and it opens a bigger door than a feature demo.</p>
+    <p class="text-slate-300 leading-relaxed mb-6"><span class="text-violet-400 font-semibold">For the platform,</span> all of it maps onto where Agentforce is already heading, across evaluation (Testing Center), auto-improvement (Agent Optimizer), and governance (Agent Fabric). The model-agnostic angle is the BYOLLM promise made concrete. A customer's investment in evals, memory, and governance survives every model swap, because it lives in the harness, above the model layer. The harness is the connective tissue between those surfaces.</p>
+    <p class="text-lg text-slate-200 leading-relaxed border-l-2 border-slate-600 pl-5">You can't own the frontier model. What you can own is the harness, the evals, the memory, and the provenance. Unlike the model you rent, those compound.</p>
   </section>
 
   <footer class="fade-up border-t border-line pt-8 text-sm text-slate-500">
@@ -3177,7 +3177,7 @@ document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
     box.classList.remove('hidden');
     box.innerHTML =
       '<p class="text-slate-300 leading-relaxed mb-2">You called <span class="mono text-emerald">' + calledMachine + '</span> of 3 as a machine. All three were machines, told to write as me.</p>' +
-      '<p class="text-slate-400 text-sm leading-relaxed">That’s the <em>easy</em> version. In the real test, three frontier language-model judges — voting together — went <span class="mono text-red">0 for 11</span> on imitations like these, rating the machine human every time. A same-author check even scored one fake as <span class="mono text-red">more &ldquo;me&rdquo; than my own writing</span> — 83.1 vs 82.8. When the imitation is short and in my register, there is no tell left in the text.</p>';
+      '<p class="text-slate-400 text-sm leading-relaxed">That’s the <em>easy</em> version. In the real test, three frontier language-model judges, voting together, went <span class="mono text-red">0 for 11</span> on imitations like these, rating the machine human every time. A same-author check even scored one fake as <span class="mono text-red">more &ldquo;me&rdquo; than my own writing</span>, 83.1 vs 82.8. When the imitation is short and in my register, there is no tell left in the text.</p>';
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 })();
