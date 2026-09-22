@@ -507,6 +507,16 @@ tailwind.config = { theme: { extend: {
     </div>
   </section>
 
+  <!-- SO WHAT — business value / outcome wrap -->
+  <section class="fade-up">
+    <h2 class="text-2xl font-bold mb-4">So what — what this is actually worth</h2>
+    <p class="text-slate-300 leading-relaxed mb-5">Seven parts have argued one idea, that the harness is the product and the model is a rentable CPU. Here's what that buys, and it lands in three places.</p>
+    <p class="text-slate-300 leading-relaxed mb-4"><span class="text-blue-400 font-semibold">For me and every SE,</span> the harness measurably improved, and it now keeps a change only when it clears a held-out bar, so my own output got better and stopped regressing quietly. It scales past me through the SE Starter Kit, so other SEs can run the same discipline rather than rebuild it. And the next build makes it model-agnostic — the same <span class="mono text-sm">~/.claude</span> config ported onto an open runtime so it runs on GPT, Grok, or Gemini, one harness across every model. That port is planned, not shipped, and I'll show it when it runs.</p>
+    <p class="text-slate-300 leading-relaxed mb-4"><span class="text-emerald font-semibold">For the customer,</span> every enterprise standing up agents hits the same wall — no way to tell whether a change made the agent better, regressions that ship silently, and "eval" that's really a vibe. What's on this page demonstrates the answer rather than describing it. You measure the change, gate the regression before it reaches anyone, evaluate with a bound instead of a vanity number, and prove where an output came from when no detector can. That's an agent-quality and trust conversation, and it opens a bigger door than a feature demo.</p>
+    <p class="text-slate-300 leading-relaxed mb-6"><span class="text-violet-400 font-semibold">For the platform,</span> all of it maps onto where Agentforce is already heading — evaluation (Testing Center), auto-improvement (Agent Optimizer), governance (Agent Fabric) — and the model-agnostic angle is the BYOLLM promise made concrete. A customer's investment in evals, memory, and governance survives every model swap, because it lives in the harness, above the model layer. The harness is the connective tissue between those surfaces.</p>
+    <p class="text-lg text-slate-200 leading-relaxed border-l-2 border-slate-600 pl-5">You can't own the frontier model. What you can own is the harness, the evals, the memory, and the provenance — and unlike the model you rent, those compound.</p>
+  </section>
+
   <footer class="fade-up border-t border-line pt-8 text-sm text-slate-500">
     <p class="mb-2">Context Engineering is a series on giving Claude durable context. Parts 1 through 6 covered memory, Agent Script, MCP, the knowledge graph, skills, and the operating system.</p>
     <p>Part 7 references <a href="https://arxiv.org/abs/2608.07545" target="_blank" rel="noopener">DarwinX (arXiv 2608.07545)</a> and its open-source framework Beagle. Everything interactive here runs locally in your browser. No data leaves the page.</p>
