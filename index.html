@@ -84,7 +84,7 @@ tailwind.config = { theme: { extend: {
 
   <!-- THE THREE PLANES -->
   <section class="fade-up">
-    <h2 class="text-2xl font-bold mb-6">Three planes, one frozen model</h2>
+    <h2 class="text-2xl font-bold mb-6">Three Planes, One Frozen Model</h2>
     <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="planes-fig">
       <svg viewBox="0 0 720 310" class="w-full h-auto" role="img" aria-label="Living diagram: operate, verify, and evolve planes orchestrated around one frozen model, with a recursive loop where the evolve plane improves the harness itself. Hover a plane for detail.">
         <defs>
@@ -119,9 +119,9 @@ tailwind.config = { theme: { extend: {
           <text x="553" y="65.5" text-anchor="middle" fill="#a78bfa" font-size="9" letter-spacing="1" class="mono">03 · EVOLVE</text>
           <text x="518" y="101" fill="#94a3b8" font-size="11" class="mono">improves itself, gated</text>
         </g>
-        <rect x="200" y="200" width="320" height="62" rx="10" fill="rgba(148,163,184,.05)" stroke="#475569" stroke-width="1.5"/>
+        <rect x="175" y="200" width="370" height="62" rx="10" fill="rgba(148,163,184,.05)" stroke="#475569" stroke-width="1.5"/>
         <text x="360" y="230" text-anchor="middle" fill="#e2e8f0" font-size="15.5" font-weight="700">frozen model</text>
-        <text x="360" y="250" text-anchor="middle" fill="#64748b" font-size="10.5" class="mono">you don't retrain it · swap any frontier model into it</text>
+        <text x="360" y="250" text-anchor="middle" fill="#64748b" font-size="10" class="mono">you don't retrain it · swap any frontier model into it</text>
       </svg>
       <div id="plane-detail" class="mono text-xs text-slate-400 mt-3 min-h-[1.1rem]" aria-live="polite">hover or tap a plane to see what runs in it</div>
       <figcaption class="mono text-xs text-slate-500 mt-2 leading-relaxed">The three planes orchestrate around a model I don't own or retrain, so it's a socket. Only the harness changes. <span class="text-violet-400">Evolve</span> is the recursive loop: it scores and gates changes to the harness itself on a held-out set, so it can't quietly get worse.</figcaption>
@@ -164,7 +164,7 @@ tailwind.config = { theme: { extend: {
   <!-- DEMO 1 — LIVE VOICE GUARD -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-emerald mb-2">Run it · 1 of 4</div>
-    <h2 class="text-2xl font-bold mb-3">The voice guard, live</h2>
+    <h2 class="text-2xl font-bold mb-3">The Voice Guard, Live</h2>
     <p class="text-slate-300 leading-relaxed mb-5">This is the real scorer that runs on everything I write, and it runs both layers. There's a generic AI-writing detector for the 0–100 score, plus my own voice overlay for the tells I can't stop making (announced hedges, aphorism cadences I don't actually use). The exact code is ported verbatim, with no network call, so paste anything or try a sample.</p>
     <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="vlayer-fig">
       <div class="mono text-xs tracking-widest uppercase text-emerald mb-3">The six layers this scorer runs</div>
@@ -253,7 +253,7 @@ tailwind.config = { theme: { extend: {
   <!-- DEMO 2 — THE GATE -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-violet-400 mb-2">Run it · 2 of 4</div>
-    <h2 class="text-2xl font-bold mb-3">The preserve-and-extend gate</h2>
+    <h2 class="text-2xl font-bold mb-3">The Preserve-and-Extend Gate</h2>
     <p class="text-slate-300 leading-relaxed mb-5">This is how the harness admits a change to itself, borrowed from DarwinX. A proposed change is scored on a <span class="text-emerald">tune</span> set and a held-out set. Admit it only if it gains on tune <em>and</em> doesn't regress the held-out set past a small budget. Drag the sliders, then try to sneak through a change that looks great on average but quietly breaks the held-out set.</p>
     <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="evolve-fig">
       <div class="mono text-xs tracking-widest uppercase text-violet-400 mb-3">The loop the slider below lives inside</div>
@@ -312,7 +312,7 @@ tailwind.config = { theme: { extend: {
   <!-- EVOLVE SUBSTANCE — the 4-paper lifecycle + SWE-bench gate baseline -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-violet-400 mb-2">What the gate gates</div>
-    <h2 class="text-2xl font-bold mb-3">The same gate, on real ability</h2>
+    <h2 class="text-2xl font-bold mb-3">The Same Gate, on Real Ability</h2>
     <p class="text-slate-300 leading-relaxed mb-5">The slider you just dragged isn't a toy, it's wired to a real fitness signal built from four published methods. An applied-AI scientist at Amazon pointed me at them, and they map cleanly onto the DarwinX loop. Meta-Knowledge prepares the context, VERA scores the output with an honest bound, ECHO attributes which step failed, and DEEVO optimizes where there's no gold answer. Score a change, gate it, and keep it only if it actually improves.</p>
     <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="lifecycle-fig">
       <div class="mono text-xs tracking-widest uppercase text-violet-400 mb-3">Four papers, one measured loop</div>
@@ -357,7 +357,7 @@ tailwind.config = { theme: { extend: {
   <!-- DEMO 3 — RIGHT ORACLE -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-emerald mb-2">Run it · 3 of 4</div>
-    <h2 class="text-2xl font-bold mb-3">The right oracle for the right claim</h2>
+    <h2 class="text-2xl font-bold mb-3">The Right Oracle for the Right Claim</h2>
     <p class="text-slate-300 leading-relaxed mb-5">This is the sharpest of the verify rules. Before you call something false, ask where it would be true <em>if</em> it were, because absence from a source that wouldn't carry the claim proves nothing. Here's a claim, and you pick where you'd check it.</p>
     <div class="glass rounded-xl p-6">
       <div class="mono text-sm text-slate-200 mb-1">Claim under audit:</div>
@@ -376,7 +376,7 @@ tailwind.config = { theme: { extend: {
   <!-- DEMO 4 — MANIFEST vs REALITY -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-amber mb-2">Run it · 4 of 4</div>
-    <h2 class="text-2xl font-bold mb-3">What the harness said about itself</h2>
+    <h2 class="text-2xl font-bold mb-3">What the Harness Said About Itself</h2>
     <p class="text-slate-300 leading-relaxed mb-5">A system that compounds drifts from its own self-description, so before I wrote this I ran a census of the harness against its own manifest. Flip it to see what the census found.</p>
     <div class="glass rounded-xl p-6">
       <div class="flex items-center gap-3 mb-5">
@@ -390,7 +390,7 @@ tailwind.config = { theme: { extend: {
 
   <!-- WHERE THESE CAME FROM — the deal-work origin -->
   <section class="fade-up">
-    <h2 class="text-2xl font-bold mb-4">Where these came from</h2>
+    <h2 class="text-2xl font-bold mb-4">Where These Came From</h2>
     <p class="text-slate-300 leading-relaxed mb-4">I didn't design the verify plane. It's scar tissue.</p>
     <figure class="glass rounded-xl p-4 sm:p-6 my-6" id="scar-fig">
       <div class="grid grid-cols-3 gap-2 mono text-[10px] tracking-widest uppercase mb-2">
@@ -449,7 +449,7 @@ tailwind.config = { theme: { extend: {
 
   <!-- LIMITS -->
   <section class="fade-up">
-    <h2 class="text-2xl font-bold mb-4">Where this is thin</h2>
+    <h2 class="text-2xl font-bold mb-4">Where This Is Thin</h2>
     <p class="text-slate-300 leading-relaxed mb-4">The self-verify half is mature and load-bearing, with four rules, four wired gates, and use in every session. The self-<em>evolve</em> half is real but early, with one measured guard, one benchmark task the agent actually missed (the gate correctly rejected it), and correction loops that mostly propose rather than act. So the title says "evolving," in the present tense, because it isn't "evolved" yet.</p>
     <p class="text-slate-300 leading-relaxed mb-4">The verifier is only a proxy that scores slop and voice-law. Whether the writing is true or persuasive is beyond it. Optimizing any proxy hard enough eventually games it, which is exactly why the held-out gate exists and why the guard earns "better at catching my known tells" instead of "objectively better writing."</p>
     <p class="text-slate-300 leading-relaxed">The sharpest gap is that until the day I wrote this, the tooling that makes all of this measurable had no version history, and the folder wasn't even tracked. A harness that preaches "prove it, and don't trust a stale finding" wasn't applying either rule to itself, which is fixed now. And it's the most honest thing in this whole series, because the drift you saw in the last demo is the system's natural entropy, and the answer isn't faith. It's a periodic, adversarial audit of your own machine.</p>
@@ -458,7 +458,7 @@ tailwind.config = { theme: { extend: {
   <!-- THE CEILING — mimic + provenance (merged arms-race finding) -->
   <section class="fade-up">
     <div class="mono text-xs tracking-widest uppercase text-amber mb-2">The ceiling</div>
-    <h2 class="text-2xl font-bold mb-3">I tried to grade my own writing</h2>
+    <h2 class="text-2xl font-bold mb-3">I Tried to Grade My Own Writing</h2>
     <p class="text-slate-300 leading-relaxed mb-5">The evolve plane already scores my writing for AI tells, and that's the guard from the first demo. So I asked whether it could catch AI pretending to be <em>me</em>. I built the test aimed straight at the guard's blind spot, answering the same questions in my own register, lowercase, with my phrasing and my analogies. Call each of these before you read the numbers.</p>
     <figure class="glass rounded-xl p-4 sm:p-6 mb-6" id="mimic-fig">
       <div class="mono text-xs tracking-widest uppercase text-amber mb-3">How far text-only detection gets you</div>
@@ -509,7 +509,7 @@ tailwind.config = { theme: { extend: {
 
   <!-- SO WHAT — business value / outcome wrap -->
   <section class="fade-up">
-    <h2 class="text-2xl font-bold mb-4">So what, then: what this is actually worth</h2>
+    <h2 class="text-2xl font-bold mb-4">So What, Then: What This Is Actually Worth</h2>
     <p class="text-slate-300 leading-relaxed mb-5">Seven parts have argued one idea, that the harness is the product and the model is a rentable CPU. Here's what that buys, and it lands in three places.</p>
     <p class="text-slate-300 leading-relaxed mb-4"><span class="text-blue-400 font-semibold">For me and every SE,</span> the harness measurably improved, and it now keeps a change only when it clears a held-out bar, so my own output got better and stopped regressing quietly. It scales past me through the SE Starter Kit, so other SEs can run the same discipline rather than rebuild it. And the next build makes it model-agnostic, the same <span class="mono text-sm">~/.claude</span> config ported onto an open runtime so it runs on GPT, Grok, or Gemini, one harness across every model. That port is planned, not shipped, and I'll show it when it runs.</p>
     <p class="text-slate-300 leading-relaxed mb-4"><span class="text-emerald font-semibold">For the customer,</span> every enterprise standing up agents hits the same wall. No way to tell whether a change made the agent better, regressions that ship silently, and "eval" that's really a vibe. What's on this page demonstrates the answer rather than describing it. You measure the change, gate the regression before it reaches anyone, evaluate with a bound instead of a vanity number, and prove where an output came from when no detector can. That's an agent-quality and trust conversation, and it opens a bigger door than a feature demo.</p>
